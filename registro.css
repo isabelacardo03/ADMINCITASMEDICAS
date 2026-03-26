@@ -1,0 +1,42 @@
+/* Imagen de fondo para el registro */
+.register-bg {
+    background: linear-gradient(rgba(0, 86, 179, 0.7), rgba(0, 86, 179, 0.7)), 
+                url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.sidebar-content {
+    margin-top: auto; /* Empuja el texto hacia abajo como en la imagen */
+}
+
+/* Fila para Password y Confirm Password */
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+.col {
+    flex: 1;
+}
+
+.small-label {
+    font-size: 11px !important;
+    color: #666;
+}
+
+.footer-form {
+    margin-top: 30px;
+    font-size: 11px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Ajuste para que el botón se vea igual al de la imagen */
+.btn-signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
