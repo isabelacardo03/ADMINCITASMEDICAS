@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - Hospital San Vicente de Paul</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="registro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="barra-color registro">
+            <div class="logo">
+                <h1>Hospital San Vicente de Paul</h1>
+            </div>
+            <img src="img/favicon.png" width="40" >
+        </div>
+
+        <div class="section-formulario">
+            <h2>Crear cuenta</h2>
+            <p class="subtitulo">Ingresa las credenciales para continuar.</p>
+
+            <form action="registro.php" method="POST">
+                <label>Nombre completo</label>
+                    <input type="text" name="fullname" placeholder="Dr. Juan Rojas" required>
+                
+
+                <label>Dirección de correo</label>
+                <input type="email" name="email" placeholder="juan.rojas@hospital.com" required>
+
+                <div class="fila">
+                    <div class="columna">
+                        <label>Contraseña</label>
+                        <input type="password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="columna">
+                        <label>Confirmar contraseña</label>
+                        <input type="password" name="confirm_password" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="boton-iniciar">Crear cuenta &rarr;</button>
+            </form>
+
+            <p class="texto-iniciar">¿Ya tienes una cuenta? <a href="login.html">Acceder</a></p>
+            
+            <div class="footer">
+                <span>Portal de Atención Médica</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
