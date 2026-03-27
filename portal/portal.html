@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin_id'])) {
-    header("Location: login.html");
+    header("Location: ../login/login.html");
     exit();
 }
 ?>
@@ -12,23 +12,23 @@ if (!isset($_SESSION['admin_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="portal.css">
     <title>Panel de Control - Hospital San Visente de Paul</title>
 </head>
 <body>
 
 <header>
-    <div><img src="favicon.png"></div>
+    <div><img src="../img/favicon.png"></div>
     <h1>Panel de Control - Hospital San Visente de Paul</h1>
 </header>
 
 <div class="container">
-    <a href="gestion_pacientes.php" class="card">
+    <a href="../paciente.html" class="card">
         <div class="bi bi-person-circle icon"></div>
         <h3>Gestión de Pacientes</h3>
     </a>
 
-    <a href="gestion_medicos.php" class="card">
+    <a href="../medicos.html" class="card">
         <div class="icon bi bi-heart-pulse-fill"></div>
         <h3>Gestión de Médicos</h3>
     </a>
@@ -43,12 +43,12 @@ if (!isset($_SESSION['admin_id'])) {
         <h3>Gestión de Citas</h3>
     </a>
 
-    <a href="exportar_datos.php" class="card">
+    <a href="../gestionDatos/importar_exportar.php" class="card">
         <div class="icon bi bi-arrow-down-square-fill"></div>
-        <h3>Exportación de Datos</h3>
+        <h3>Exportación e Importacion de Datos</h3>
     </a>
 
-    <a href="graficos.php" class="card">
+    <a href="../graficos/graficos.php" class="card">
         <div class="icon bi bi-bar-chart-line-fill"></div>
         <h3>Información Gráfica</h3>
     </a>
