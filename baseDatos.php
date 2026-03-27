@@ -1,7 +1,7 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "sistema_citas");
+$conexionBd = mysqli_connect("localhost", "root", "", "sistema_citas");
 
-if (!$conexion) {
+if (!$conexionBd) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 ?>

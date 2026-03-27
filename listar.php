@@ -1,7 +1,7 @@
 <?php
 header("Content-type: application/json");
 
-require __DIR__ . "/bd.php";
+require __DIR__ . "/baseDatos.php";
 
 $tipo = $_GET["tipo"] ?? "";
 

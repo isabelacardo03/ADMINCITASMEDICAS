@@ -35,28 +35,34 @@
     <section class="form-section">
         <h2>Registrar / Editar Paciente</h2>
 
-        <form id="formPaciente" action="guardar.php" method="post">
+        <form id="formPaciente" action="guardar.php" method="post" >
 
-            <input type="text" placeholder="Identificación" id="identificacion" name="identicacion">
-            <input type="text" placeholder="Tipo Documento" id="tipoDocumento" name="tipoDocumento">
-            <input type="text" placeholder="Nombre" id="nombre" name="nombre">
-            <input type="text" placeholder="Apellido" id="apellido" name="apellido">
-            <input type="date" id="fechaNacimiento" name="fechaNacimiento">
-            <input type="text" placeholder="Dirección" id="direccion" name="direccion">
-            <input type="text" placeholder="Teléfono" id="telefono" name="telefono">
-            <input type="password" placeholder="Contraseña" id="contrasena" name="contrasena">
+            <input type="hidden" name="tipo" value="paciente">
+            <input type="text" placeholder="Identificación" id="identificacion" name="identificacion" required>
+            <select id="tipoDocumento" name="tipoDocumento" required>
+                <option value="">Tipo de documento</option>
+                <option value="CC">CC</option>
+                <option value="TI">TI</option>
+                <option value="CE">CE</option>
+            </select>
+            <input type="text" placeholder="Nombre" id="nombre" name="nombre" required>
+            <input type="text" placeholder="Apellido" id="apellido" name="apellido" required>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            <input type="text" placeholder="Dirección" id="direccion" name="direccion" required>
+            <input type="text" placeholder="Teléfono" id="telefono" name="telefono" required>
+            <input type="password" placeholder="Contraseña" id="contrasena" name="contrasena" required>
 
-            <select id="estado">
-                <option value="" name="estado">Estado</option>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
+            <select id="estado" name="estado" required>
+                <option value="">Estado</option>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
             </select>
 
             <input type="text" placeholder="Pregunta Seguridad" id="preSeguridad" name="preSeguridad">
             <input type="text" placeholder="Respuesta Seguridad" id="reSeguridad" name="reSeguridad">
 
             <div class="botones">
-                <button type="button" >Guardar</button>
+                <button type="submit" >Guardar</button>
                 <button type="button" >Modificar</button>
                 <button type="button" >Eliminar</button>
             </div>
@@ -65,9 +71,12 @@
     </section>
 
     <!-- TABLA -->
-    <section class="table-section" id="tablaPacientes">
+    <section class="table-section" >
         <h2>Lista de Pacientes</h2>
-
+            <div id="tablaPacientes">
+        <p >No hay pacientes
+        </p>
+    </div>
         
     </section>
 

@@ -1,7 +1,7 @@
-<¿<?php
+<?php
 header("Content-type: application/json");
 
-require __DIR__ . "/bd.php";
+require __DIR__ . "/baseDatos.php";
 
 $tipo = $_POST["tipo"] ?? ""; 
 
@@ -25,11 +25,11 @@ if ($tipo === "paciente") {
     $reSeguridad    = trim($_POST["reSeguridad"] ?? "");
 
 if ($identificacion === "" || $nombre === "" || $apellido === "" || $contrasena === "") {
-        echo json_encode(["Ok" => false, "mensaje" => "Campos obligatorios vacíos"]);
+        echo json_encode(["ok" => false, "mensaje" => "Campos obligatorios vacíos"]);
         exit;
     }
 
-    $contrasena = md5("contrasena");
+    $contrasena = md5($contrasena);
 
      try {
         $consulta = mysqli_prepare($conexionBd, 
@@ -56,7 +56,7 @@ if ($identificacion === "" || $nombre === "" || $apellido === "" || $contrasena 
 
         echo json_encode(["ok" => true, "mensaje" => "Paciente guardado correctamente"]);
 
-    } catch (Exception $error) {
+    } catch (mysqli_stmt_exeption $error) {
         echo json_encode(["ok" => false, "mensaje" => "Error: " . $error->getMessage()]);
     }
 }
@@ -70,9 +70,8 @@ if ($tipo === "medico") {
     $estado     = trim($_POST["estado"] ?? "");
     $tipoMedico = trim($_POST["tipoMedico"] ?? "");
 
-    // VALIDACIÓN
     if ($idMedico === "" || $nombre === "" || $apellido === "") {
-        echo json_encode(["Ok" => false, "mensaje" => "Campos obligatorios vacíos"]);
+        echo json_encode(["ok" => false, "mensaje" => "Campos obligatorios vacíos"]);
         exit;
     }
 
@@ -94,9 +93,14 @@ if ($tipo === "medico") {
         mysqli_stmt_execute($consulta);
         mysqli_stmt_close($consulta);
 
-        echo json_encode(["Ok" => true, "mensaje" => "Médico guardado correctamente"]);
+        echo json_encode(["ok" => true, "mensaje" => "Médico guardado correctamente"]);
 
     } catch (Exception $error) {
-        echo json_encode(["Ok" => false, "mensaje" => "Error: " . $error->getMessage()]);
+        echo json_encode(["ok" => false, "mensaje" => "Error: " . $error->getMessage()]);
     }
 }
+
+	
+	
+var_dump($estado);
+exit;

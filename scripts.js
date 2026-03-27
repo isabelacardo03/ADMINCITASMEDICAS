@@ -8,7 +8,7 @@ async function listar(){
     tabla.innerHTML = '<p>No hay pacientes...</p>';
 
     try{
-        const respuesta = await fetch("listar.php");
+        const respuesta = await fetch("listar.php?tipo=paciente");
         const resultado = await respuesta.json();
 
         if (!resultado.ok){
@@ -57,8 +57,8 @@ async function listar(){
         tabla.innerHTML = html;
 
     }catch(error){
-        tabla.innerHTML = '<p>Error al conectar con el servidor</p>';
-        console.error(error);
+        alert("Error: " + error.message);
+    console.error(error);
     }
 }
 
