@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Citas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<aside class="sidebar">
+    <ul>
+        <li><a href="../portal">Dashboard</a></li>
+        <li><a href="../paciente.html">Pacientes</a></li>
+        <li><a href="../medicos.html">Médicos</a></li>
+        <li class="active">Citas</li>
+    </ul>
+</aside>
+
+<main class="main">
+
+    <h1>Gestión de Citas</h1>
+
+    <section class="form-section" id="formCitas">
+        <h2>Registrar Cita</h2>
+        <div>
+            <input type="text" id="paciente" placeholder="Paciente">
+            <input type="text" id="medico" placeholder="Médico">
+            <input type="date" id="fecha">
+            <input type="time" id="hora">
+        </div>
+         <div>
+        <div class="botones">
+            <button onclick="citaEditandoId ? actualizarCita() : guardarCita()">Guardar</button>
+        </div>
+    </section>
+
+    <section class="form-section" id="buscarCitas">
+    <h2>Consultar Citas</h2>
+    <div>
+        <input type="text" id="filtroPaciente" placeholder="Paciente">
+        <input type="text" id="filtroMedico" placeholder="Médico">
+        <input type="date" id="filtroFecha">
+        <div class="botones">
+            <button type="button" onclick="consultarCitas()">Buscar</button>
+            <button type="button" onclick="listarCitas()">Mostrar todas</button>
+        </div>
+    </div>
+</section>
+
+    <section class="table-section">
+        <h2>Lista de Citas</h2>
+        <div id="tablaCitas"></div>
+    </section>
+
+</main>
+
+<script src="citas.js"></script>
+</body>
+</html>
