@@ -1,7 +1,7 @@
 <?php
 header("Content-type: application/json");
 
-require __DIR__ . "/baseDatos.php";
+require __DIR__ . "/../baseDatos.php";
 
 $tipo = $_POST["tipo"] ?? ""; 
 
@@ -19,25 +19,20 @@ if ($tipo === "paciente") {
     $fechaNacimiento= trim($_POST["fechaNacimiento"] ?? "");
     $direccion      = trim($_POST["direccion"] ?? "");
     $telefono       = trim($_POST["telefono"] ?? "");
-    $contrasena     = trim($_POST["contrasena"] ?? "");
     $estado         = trim($_POST["estado"] ?? "");
-    $preSeguridad   = trim($_POST["preSeguridad"] ?? "");
-    $reSeguridad    = trim($_POST["reSeguridad"] ?? "");
 
-if ($identificacion === "" || $nombre === "" || $apellido === "" || $contrasena === "") {
+if ($identificacion === "" || $nombre === "" || $apellido === "") {
         echo json_encode(["ok" => false, "mensaje" => "Campos obligatorios vacíos"]);
         exit;
     }
 
-    $contrasena = md5($contrasena);
-
      try {
         $consulta = mysqli_prepare($conexionBd, 
         "INSERT INTO usuario 
-        (identificacion, tipoDocumento, nombre, apellido, fechaNacimiento, direccion, telefono, contrasena, estado, preSeguridad, reSeguridad) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        (identificacion, tipoDocumento, nombre, apellido, fechaNacimiento, direccion, telefono, estado) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-        mysqli_stmt_bind_param($consulta, "sssssssssss",
+        mysqli_stmt_bind_param($consulta, "ssssssss",
             $identificacion,
             $tipoDocumento,
             $nombre,
@@ -45,16 +40,14 @@ if ($identificacion === "" || $nombre === "" || $apellido === "" || $contrasena 
             $fechaNacimiento,
             $direccion,
             $telefono,
-            $contrasena,
-            $estado,
-            $preSeguridad,
-            $reSeguridad
+            $estado
         );
 
         mysqli_stmt_execute($consulta);
         mysqli_stmt_close($consulta);
 
         echo json_encode(["ok" => true, "mensaje" => "Paciente guardado correctamente"]);
+        header("Location: ../pacientes/paciente.html");
 
     } catch (mysqli_stmt_exeption $error) {
         echo json_encode(["ok" => false, "mensaje" => "Error: " . $error->getMessage()]);

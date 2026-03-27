@@ -98,5 +98,5 @@ async function eliminar(identificacion) {
 }
 
 function modificarPaciente(identificacion) {
-    window.location.href = `modificarPaciente.php?identificacion=${identificacion}`;
+    window.location.href = `../pacientes/modificarPaciente.php?identificacion=${identificacion}`;
 }
