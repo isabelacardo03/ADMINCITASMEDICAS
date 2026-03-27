@@ -31,7 +31,7 @@ $error = isset($_GET['error']) ? $_GET['error'] : "";
                     <input type="hidden" name="tipo" value="pacientes">
                     <label>Subir archivo .csv:</label>
                     <input type="file" name="archivo" accept=".csv" required>
-                    <button type="submit" class="boton boton-import">Cargar en Bloque</button>
+                    <button type="submit" class="boton boton-importar">Cargar en Bloque</button>
                 </form>
             </div>
         </div>
@@ -45,7 +45,7 @@ $error = isset($_GET['error']) ? $_GET['error'] : "";
                     <input type="hidden" name="tipo" value="citas">
                     <label>Subir archivo .csv:</label>
                     <input type="file" name="archivo" accept=".csv" required>
-                    <button type="submit" class="boton boton-import">Cargar en Bloque</button>
+                    <button type="submit" class="boton boton-importar">Cargar en Bloque</button>
                 </form>
             </div>
         </div>
