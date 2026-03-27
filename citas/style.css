@@ -1,0 +1,194 @@
+/* --- Reset básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: white;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 220px;
+    height: 160vh;
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sidebar li:hover,
+.sidebar .active {
+    background: #34495e;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+}
+
+/* --- Header --- */
+.header {
+    position: fixed;
+    left: 207px;
+    top: 0;
+    right: 0;
+    height: 60px;
+    background: #ecf0f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* --- Main --- */
+.main {
+    margin: 80px;
+    margin-top: 60px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* --- Secciones de formulario --- */
+.form-section {
+    margin-top: 20px;
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-section input,
+.form-section select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#formCitas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#formCitas input {
+    width: 48%;
+}
+
+/* --- Botones --- */
+.botones {
+    display: flex; 
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.botones button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.botones button:hover {
+    background: #2980b9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+table th {
+    background: #bdc3c7;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table button {
+    padding: 5px 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    background: #3498db;  
+    color: white;         
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Botón Modificar */
+table button.modificar {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Botón Cancelar */
+table button.cancelar {
+    background-color: #c0392b;
+    color: white;
+}
+
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    #formCitas input {
+        width: 100%;
+    }
+
+    .main {
+        margin: 20px;
+    }
+}
+
+
+
+
+
+
+td .botones-tabla {
+    display: flex;
+    gap: 10px;                /* espacio entre botones */
+    justify-content: flex-start; /* alineación al inicio */
+}
+
+td .botones-tabla button {
+    padding: 5px 10px;        /* tamaño de botón más compacto */
+    background: #3498db;      /* mismo color que antes */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+td .botones-tabla button:hover {
+    background: #2980b9;
+}
