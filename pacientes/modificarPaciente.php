@@ -31,8 +31,8 @@ if (!$paciente) {
     
 </head>
 <body class="imagen-body">
-    <section class="form-section">
-        <h2>Registrar / Editar Paciente</h2>
+    <section class="form">
+        <h2>Actualizar Paciente</h2>
 
         <form id="formPaciente" action="actualizarPaciente.php" method="post"> 
             <input type="hidden" name="tipo" value="paciente">
