@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Médicos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <img src="img/logoHospital.webp" alt="Logo Hospital" class="logo">
+
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="paciente.html">Pacientes</a></li>
+        <li class="active">Médicos</li>
+        <li><a href="">Citas</a></li>
+    </ul>
+</aside>
+
+<!-- HEADER -->
+<header class="header">
+    <input type="text" placeholder="Buscar médico...">
+    <div class="user">Admin</div>
+</header>
+
+<!-- MAIN -->
+<main class="main">
+
+    <h1>Gestión de Médicos</h1>
+
+    <!-- FORMULARIO -->
+    <section class="form-section">
+        <h2>Registrar / Editar Médico</h2>
+
+        <form id="formMedico">
+
+            <input type="text" placeholder="ID Médico" id="idMedico">
+            <input type="text" placeholder="Nombre" id="nombre">
+            <input type="text" placeholder="Apellido" id="apellido">
+            <input type="text" placeholder="Teléfono" id="telefono">
+
+            <select id="estado">
+                <option value="">Estado</option>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+
+            <input type="text" placeholder="Tipo de Médico (Ej: General, Especialista)" id="tipoMedico">
+
+            <div class="botones">
+                <button type="button" onclick="guardarMedico()">Guardar</button>
+                <button type="button" onclick="modificarMedico()">Modificar</button>
+                <button type="button" onclick="eliminarMedico()">Eliminar</button>
+            </div>
+
+        </form>
+    </section>
+
+    <!-- TABLA -->
+    <section class="table-section">
+        <h2>Lista de Médicos</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Teléfono</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaMedicos">
+                <tr>
+                    <td>1</td>
+                    <td>Carlos</td>
+                    <td>López</td>
+                    <td>3009876543</td>
+                    <td>General</td>
+                    <td>Activo</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<script src="medicos.js"></script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,77 +8,80 @@
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-    <h2>Clínica</h2>
-    <ul>
-        <li class="active">Dashboard</li>
-        <li>Pacientes</li>
-        <li>Médicos</li>
-        <li>Citas</li>
-    </ul>
-</aside>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-<!-- HEADER -->
-<header class="header">
-    <input type="text" placeholder="Buscar...">
-    <div class="user">Admin</div>
-</header>
+        <img src="img/logoHospital.webp" alt="Logo Hospital" class="logo">
+        <ul>
+            <li class="active">Dashboard</li>
+            <li><a href="paciente.html">Pacientes</a></li>
+            <li><a href="medicos.html">Médicos</a></li>
+            <li>Citas</li>
+        </ul>
+        </img>
+    </aside>
 
-<!-- MAIN -->
-<main class="main">
+    <!-- HEADER -->
+    <header class="header">
+        <input type="text" placeholder="Buscar...">
+        <div class="user">Admin</div>
+    </header>
 
-    <h1>Bienvenido</h1>
+    <!-- MAIN -->
+    <main class="main">
 
-    <!-- CARDS -->
-    <section class="cards">
-        <div class="card">
-            <h3>Pacientes</h3>
-            <p>120</p>
-        </div>
-        <div class="card">
-            <h3>Citas</h3>
-            <p>45</p>
-        </div>
-        <div class="card">
-            <h3>Médicos</h3>
-            <p>10</p>
-        </div>
-    </section>
+        <h1>Bienvenido</h1>
 
-    <!-- TABLE -->
-    <section class="table-section">
-        <h2>Próximas citas</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Paciente</th>
-                    <th>Hora</th>
-                    <th>Médico</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Juan Pérez</td>
-                    <td>10:00</td>
-                    <td>Dr. López</td>
-                    <td>Confirmada</td>
-                </tr>
-                <tr>
-                    <td>Ana Gómez</td>
-                    <td>11:00</td>
-                    <td>Dra. Ruiz</td>
-                    <td>Pendiente</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+        <!-- CARDS -->
+        <section class="cards">
+            <div class="card">
+                <h3>Pacientes</h3>
+                <p>120</p>
+            </div>
+            <div class="card">
+                <h3>Citas</h3>
+                <p>45</p>
+            </div>
+            <div class="card">
+                <h3>Médicos</h3>
+                <p>10</p>
+            </div>
+        </section>
 
-</main>
+        <!-- TABLE -->
+        <section class="table-section">
+            <h2>Próximas citas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Hora</th>
+                        <th>Médico</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Juan Pérez</td>
+                        <td>10:00</td>
+                        <td>Dr. López</td>
+                        <td>Confirmada</td>
+                    </tr>
+                    <tr>
+                        <td>Ana Gómez</td>
+                        <td>11:00</td>
+                        <td>Dra. Ruiz</td>
+                        <td>Pendiente</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
 
 </body>
-</html>
 
+</html>

@@ -10,13 +10,21 @@ body {
     background-color:white;
 }
 
+
+.logo{
+    padding: 10px;
+    height: 100px;
+    box-shadow: rgba(3, 3, 15, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-bottom: 14px;
+   
+}
 /* SIDEBAR */
 .sidebar {
-    width: 200px;
-    height: 100vh;
+    width: 220px;
+    height: 130vh;
     background: #2c3e50;
     color: white;
-    padding: 20px;
+    padding: 10px;
 }
 
 .sidebar h2 {
@@ -40,7 +48,7 @@ body {
 /* HEADER */
 .header {
     position: fixed;
-    left: 200px;
+    left: 207px;
     top: 0;
     right: 0;
     height: 60px;
@@ -53,7 +61,7 @@ body {
 
 /* MAIN */
 .main {
-    margin-left: 200px;
+    margin: 80px;
     margin-top: 60px;
     padding: 20px;
     width: 100%;
@@ -96,3 +104,51 @@ th {
     border-radius: 8px;
     cursor: pointer;
 }
+
+/*pacientes */
+.form-section {
+    margin-top: 20px;
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-section form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.form-section input,
+.form-section select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* BOTONES */
+.botones {
+    grid-column: span 2;
+    display: flex;
+    gap: 10px;
+}
+
+.botones button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+.botones button:hover {
+    background: #2980b9;
+}
+
+.sidebar a{
+        text-decoration: none;
+        color: white;
+}
+
+/*medicos */

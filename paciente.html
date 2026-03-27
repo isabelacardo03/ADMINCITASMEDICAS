@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pacientes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <img src="img/logoHospital.webp" alt="Logo Hospital" class="logo">
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li class="active">Pacientes</li>
+        <li><a href="medicos.html">Médicos</a></li>
+        <li><a href="">Citas</a></li>
+    </ul>
+    </img>
+</aside>
+
+<!-- HEADER -->
+<header class="header">
+    <input type="text" placeholder="Buscar paciente...">
+    <div class="user">Admin</div>
+</header>
+
+<!-- MAIN -->
+<main class="main">
+
+    <h1>Gestión de Pacientes</h1>
+
+    <!-- FORMULARIO -->
+    <section class="form-section">
+        <h2>Registrar / Editar Paciente</h2>
+
+        <form id="formPaciente" action="guardar.php" method="post">
+
+            <input type="text" placeholder="Identificación" id="identificacion" name="identicacion">
+            <input type="text" placeholder="Tipo Documento" id="tipoDocumento" name="tipoDocumento">
+            <input type="text" placeholder="Nombre" id="nombre" name="nombre">
+            <input type="text" placeholder="Apellido" id="apellido" name="apellido">
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+            <input type="text" placeholder="Dirección" id="direccion" name="direccion">
+            <input type="text" placeholder="Teléfono" id="telefono" name="telefono">
+            <input type="password" placeholder="Contraseña" id="contrasena" name="contrasena">
+
+            <select id="estado">
+                <option value="" name="estado">Estado</option>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+
+            <input type="text" placeholder="Pregunta Seguridad" id="preSeguridad" name="preSeguridad">
+            <input type="text" placeholder="Respuesta Seguridad" id="reSeguridad" name="reSeguridad">
+
+            <div class="botones">
+                <button type="button" >Guardar</button>
+                <button type="button" >Modificar</button>
+                <button type="button" >Eliminar</button>
+            </div>
+
+        </form>
+    </section>
+
+    <!-- TABLA -->
+    <section class="table-section" id="tablaPacientes">
+        <h2>Lista de Pacientes</h2>
+
+        
+    </section>
+
+</main>
+
+<script src="scripts.js"></script>
+</body>
+</html>
