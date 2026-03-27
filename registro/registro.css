@@ -18,14 +18,6 @@
     flex: 1;
 }
 
-.footer {
-    margin-top: 30px;
-    font-size: 11px;
-    color: #888;
-    display: flex;
-    justify-content: space-between;
-}
-
 .boton-iniciar {
     display: flex;
     justify-content: center;
