@@ -44,9 +44,12 @@ async function listar(){
                     <td>${p.apellido}</td>
                     <td>${p.telefono}</td>
                     <td>${p.estado}</td>
-                    <td>
-                        <button onclick="eliminarPaciente('${p.identificacion}')">
+                    <td class="boton">
+                        <button class="btn-eliminar" onclick="eliminar('${p.identificacion}')">
                             Eliminar
+                        </button>
+                        <button class="btn-modificar" onclick="modificar('${p.identificacion}')">
+                            modificar
                         </button>
                     </td>
                 </tr>

@@ -21,7 +21,7 @@ body {
 /* SIDEBAR */
 .sidebar {
     width: 220px;
-    height: 130vh;
+    height: 160vh;
     background: #2c3e50;
     color: white;
     padding: 10px;
@@ -83,11 +83,16 @@ body {
     text-align: center;
 }
 
+
+h2{
+    margin-bottom: 20px;
+}
 /* TABLE */
 table {
     width: 100%;
     border-collapse: collapse;
-}
+    
+
 
 th, td {
     padding: 10px;
@@ -96,6 +101,8 @@ th, td {
 
 th {
     background: #bdc3c7;
+}
+
 }
 
 .user{
@@ -151,4 +158,27 @@ th {
         color: white;
 }
 
-/*medicos */
+.btn-eliminar, .btn-modificar{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+    margin-left: 12px;
+}
+
+.boton button:hover{
+    background: #2980b9;
+}
+
+table tr{
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 300;
+    color: #363636;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: o.4px;
+    border-bottom: 2px solid #e8e8ee;
+}
