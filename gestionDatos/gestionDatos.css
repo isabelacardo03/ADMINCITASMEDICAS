@@ -1,0 +1,140 @@
+/* Importar una fuente más limpia */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8; /* Un gris azulado más suave */
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1a365d;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.header p {
+    color: #718096;
+    margin-top: 5px;
+}
+
+/* El contenedor principal que alinea las tarjetas */
+.grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Para que midan lo mismo */
+    gap: 30px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px; /* Bordes más redondeados */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    width: 450px;
+    transition: transform 0.3s ease;
+    border-top: 6px solid #2b6cb0; /* Detalle de color arriba */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de flotar */
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: #2d3748;
+    margin-bottom: 25px;
+}
+
+/* Estilo para los botones */
+.boton {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box; /* Importante para que no se salga */
+}
+
+.boton-exportar {
+    background-color: #38a169; /* Verde esmeralda */
+    color: white;
+}
+
+.boton-exportar:hover {
+    background-color: #2f855a;
+}
+
+.boton-import {
+    background-color: #3182ce; /* Azul vibrante */
+    color: white;
+}
+
+.boton-import:hover {
+    background-color: #2b6cb0;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #edf2f7;
+    margin: 30px 0;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+
+/* Personalizar el botón de elegir archivo */
+input[type="file"] {
+    background: #f7fafc;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px dashed #cbd5e0;
+}
+
+/* Mensajes de alerta */
+.alert {
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 930px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.success { background: #c6f6d5; color: #22543d; }
+.danger { background: #fed7d7; color: #822727; }
+
+.footer-link {
+    margin-top: 40px;
+    color: #718096;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-link:hover { color: #2b6cb0; }

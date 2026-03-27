@@ -48,7 +48,7 @@ while($f = mysqli_fetch_assoc($res_med)){
         </div>
     </div>
 
-    <a href="index.php" class="btn-volver">Volver al Panel</a>
+    <a href="../portal/portal.html" class="btn-volver">Volver al Panel</a>
 
     <script>
         // Pasamos datos de PHP a variables globales de JS
