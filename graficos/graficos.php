@@ -1,14 +1,6 @@
 <?php
 include('../baseDatos.php'); 
-session_start();
 
-// Seguridad básica
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: login/login.html");
-    exit();
-}
-
-// Consulta 1: Estados de citas
 $res_est = mysqli_query($conexionBd, "SELECT estado, COUNT(*) as total FROM citas GROUP BY estado");
 $labels_est = []; $data_est = [];
 while($f = mysqli_fetch_assoc($res_est)){
@@ -16,7 +8,6 @@ while($f = mysqli_fetch_assoc($res_est)){
     $data_est[] = $f['total'];
 }
 
-// Consulta 2: Citas por médico
 $res_med = mysqli_query($conexionBd, "SELECT m.nombre, COUNT(c.id) as total FROM medico m LEFT JOIN citas c ON m.idMedico = c.idMedico GROUP BY m.idMedico");
 $labels_med = []; $data_med = [];
 while($f = mysqli_fetch_assoc($res_med)){
