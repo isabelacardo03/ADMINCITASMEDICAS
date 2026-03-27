@@ -31,43 +31,6 @@ if ($identificacion === "" || $nombre === "" || $apellido === "" || $contrasena 
 
     $contrasena = md5($contrasena);
 
-    $modo = $_POST["modo"] ?? ""; 
-     if ($modo === "editar") {
-
-        $consulta = mysqli_prepare($conexionBd,
-        "UPDATE usuario SET 
-            tipoDocumento=?, 
-            nombre=?, 
-            apellido=?, 
-            fechaNacimiento=?, 
-            direccion=?, 
-            telefono=?, 
-            contrasena=?, 
-            estado=?, 
-            preSeguridad=?, 
-            reSeguridad=? 
-        WHERE identificacion=?");
-
-        mysqli_stmt_bind_param($consulta, "sssssssssss",
-            $tipoDocumento,
-            $nombre,
-            $apellido,
-            $fechaNacimiento,
-            $direccion,
-            $telefono,
-            $contrasena,
-            $estado,
-            $preSeguridad,
-            $reSeguridad,
-            $identificacion
-        );
-
-        mysqli_stmt_execute($consulta);
-
-        echo json_encode(["ok" => true, "mensaje" => "Paciente actualizado correctamente"]);
-        exit;
-     }
-
      try {
         $consulta = mysqli_prepare($conexionBd, 
         "INSERT INTO usuario 
@@ -139,5 +102,3 @@ if ($tipo === "medico") {
 
 	
 	
-var_dump($estado);
-exit;

@@ -48,7 +48,7 @@ async function listar(){
                         <button class="btn-eliminar" onclick="eliminar('${p.identificacion}')">
                             Eliminar
                         </button>
-                        <button class="btn-modificar" onclick="modificar('${p.identificacion}')">
+                        <button class="btn-modificar" onclick="modificarPaciente('${p.identificacion}')">
                             modificar
                         </button>
                     </td>
@@ -97,66 +97,6 @@ async function eliminar(identificacion) {
     }
 }
 
-async function modificar(identificacion){
-
-    const respuesta = await fetch("listar.php?tipo=paciente");
-    const resultado = await respuesta.json();
-
-    const paciente = resultado.pacientes.find(p => p.identificacion == identificacion);
-
-    document.getElementById("identificacion").value = paciente.identificacion;
-    document.getElementById("tipoDocumento").value = paciente.tipoDocumento;
-    document.getElementById("nombre").value = paciente.nombre;
-    document.getElementById("apellido").value = paciente.apellido;
-    document.getElementById("fechaNacimiento").value = paciente.fechaNacimiento;
-    document.getElementById("direccion").value = paciente.direccion;
-    document.getElementById("telefono").value = paciente.telefono;
-    document.getElementById("estado").value = paciente.estado;
-
-    // 🔥 clave
-    document.getElementById("modo").value = "editar";
-}
-
-async function guardar() {
-
-    const form = document.getElementById("formPaciente");
-    const datos = new FormData(form);
-
-    // Agregamos el tipo manualmente por si acaso
-    datos.append("tipo", "paciente");
-
-    // Leemos el modo: "guardar" o "editar"
-    const modo = document.getElementById("modo").value;
-
-    // Elegimos a qué archivo PHP enviar según el modo
-    let url = "";
-    if (modo === "editar") {
-        url = "modificar.php";   // actualizar paciente existente
-    } else {
-        url = "guardar.php";     // crear paciente nuevo
-    }
-
-    try {
-        const respuesta = await fetch(url, {
-            method: "POST",
-            body: datos
-        });
-
-        const resultado = await respuesta.json();
-
-        if (resultado.ok) {
-            alert(resultado.mensaje);
-            // Limpiamos el formulario después de guardar
-            form.reset();
-            // Volvemos al modo guardar
-            document.getElementById("modo").value = "guardar";
-            // Recargamos la tabla
-            listar();
-        } else {
-            alert("Error: " + resultado.mensaje);
-        }
-
-    } catch (error) {
-        alert("Error de conexión: " + error.message);
-    }
+function modificarPaciente(identificacion) {
+    window.location.href = `modificarPaciente.php?identificacion=${identificacion}`;
 }
