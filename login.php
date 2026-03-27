@@ -23,15 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-<div class="main-container">
-    <div class="login-card">
-        <div class="sidebar">
+<div class="container">
+    <div class="card">
+        <div class="barra-color">
             <div class="logo">
-                <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" width="30"> 
-                <span>Hospital San Vicente de Paul</span>
+                <h1>Hospital San Vicente de Paul</h1>
             </div>
-            <h1>Excelencia en la atención, adaptada a sus necesidades.</h1>
-            <p>Acceda a su panel de control médico y gestione la atención al paciente con total tranquilidad.</p>
+            <img src="img/favicon.png" width="40">
         </div>
 
         <div class="form-section">
