@@ -65,26 +65,27 @@ async function listar(){
     }
 }
 
-async function eliminarPaciente(id) {
+async function eliminar(identificacion) {
 
-    if (!confirm(`¿Eliminar paciente ${id}?`)) return;
+    if (!confirm(`¿Eliminar paciente ${identificacion}?`)) return;
 
-    const fila = document.getElementById(`fila-${id}`);
+    const fila = document.getElementById(`fila-${identificacion}`);
     if(fila) fila.style.opacity = '0.4';
 
     try{
         const datos = new FormData();
-        datos.append('id', id);
+        datos.append("tipo", "paciente");
+        datos.append('identificacion', identificacion);
 
-        const respuesta = await fetch("eliminarPaciente.php", {
+        const respuesta = await fetch("eliminar.php", {
             method: "POST",
             body: datos
         });
 
         const resultado = await respuesta.json();
 
-        if(resultado.Ok){
-            listarPacientes();
+        if(resultado.ok){
+            listar();
         }else{
             alert("Error: " + resultado.mensaje);
             if(fila) fila.style.opacity = '1';
@@ -93,5 +94,43 @@ async function eliminarPaciente(id) {
     }catch(error){
         alert("Error del servidor");
         if(fila) fila.style.opacity = '1';
+    }
+}
+
+async function modificar(identificacion){
+
+    try{
+        const respuesta = await fetch("listar.php?tipo=paciente");
+        const resultado = await respuesta.json();
+
+        if(!resultado.ok){
+            alert("Error: " + resultado.mensaje);
+            return;
+        }
+
+        // buscar el paciente seleccionado
+        const paciente = resultado.pacientes.find(p => p.identificacion == identificacion);
+
+        if(!paciente){
+            alert("Paciente no encontrado");
+            return;
+        }
+
+        
+        document.getElementById("identificacion").value = paciente.identificacion;
+        document.getElementById("tipoDocumento").value = paciente.tipoDocumento;
+        document.getElementById("nombre").value = paciente.nombre;
+        document.getElementById("apellido").value = paciente.apellido;
+        document.getElementById("fechaNacimiento").value = paciente.fechaNacimiento;
+        document.getElementById("direccion").value = paciente.direccion;
+        document.getElementById("telefono").value = paciente.telefono;
+        document.getElementById("contrasena").value = ""; 
+        document.getElementById("estado").value = paciente.estado;
+        document.getElementById("preSeguridad").value = paciente.preSeguridad;
+        document.getElementById("reSeguridad").value = paciente.reSeguridad;
+
+    }catch(error){
+        alert("Error al cargar datos");
+        console.error(error);
     }
 }
