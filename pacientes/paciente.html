@@ -63,6 +63,20 @@
 
         </form>
     </section>
+   <!-- seccion de consulta--> 
+    <section class="form-section" id="buscarPacientes" >
+    <h2>Consultar Paciente</h2>
+    <div>
+        <input type="text" id="buscarId" placeholder="Ingrese ID del paciente">
+
+        <div class="botones">
+            <button type="button" onclick="buscarPaciente()">Buscar</button>
+            <button type="button" >limpiar</button>
+        </div>
+    </div>
+
+    <div id="resultadoPaciente" class="resultado-paciente"></div>
+</section>
 
     <!-- TABLA -->
     <section class="table-section" >
@@ -73,6 +87,7 @@
     </div>
         
     </section>
+
 
 </main>
 

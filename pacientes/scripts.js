@@ -2,16 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     listar();
 });
 
-async function listar(){
+async function listar() {
     const tabla = document.getElementById('tablaPacientes');
 
     tabla.innerHTML = '<p>No hay pacientes...</p>';
 
-    try{
+    try {
         const respuesta = await fetch("../pacientes/listar.php?tipo=paciente");
         const resultado = await respuesta.json();
 
-        if (!resultado.ok){
+        if (!resultado.ok) {
             tabla.innerHTML = `<p>Error: ${resultado.mensaje}</p>`;
             return;
         }
@@ -59,9 +59,9 @@ async function listar(){
         html += `</tbody></table>`;
         tabla.innerHTML = html;
 
-    }catch(error){
+    } catch (error) {
         alert("Error: " + error.message);
-    console.error(error);
+        console.error(error);
     }
 }
 
@@ -70,9 +70,9 @@ async function eliminar(identificacion) {
     if (!confirm(`¿Eliminar paciente ${identificacion}?`)) return;
 
     const fila = document.getElementById(`fila-${identificacion}`);
-    if(fila) fila.style.opacity = '0.4';
+    if (fila) fila.style.opacity = '0.4';
 
-    try{
+    try {
         const datos = new FormData();
         datos.append("tipo", "paciente");
         datos.append('idPaciente', identificacion);
@@ -84,19 +84,88 @@ async function eliminar(identificacion) {
 
         const resultado = await respuesta.json();
 
-        if(resultado.ok){
+        if (resultado.ok) {
             listar();
-        }else{
+        } else {
             alert("Error: " + resultado.mensaje);
-            if(fila) fila.style.opacity = '1';
+            if (fila) fila.style.opacity = '1';
         }
 
-    }catch(error){
+    } catch (error) {
         alert("Error del servidor");
-        if(fila) fila.style.opacity = '1';
+        if (fila) fila.style.opacity = '1';
     }
 }
 
 function modificarPaciente(identificacion) {
     window.location.href = `../pacientes/modificarPaciente.php?idPaciente=${identificacion}`;
+}
+
+async function buscarPaciente() {
+    const id = document.getElementById('buscarId').value;
+    const div = document.getElementById('resultadoPaciente');
+
+    if (id === "") {
+        div.innerHTML = "Ingrese un ID";
+        return;
+    }
+
+    div.innerHTML = "Buscando...";
+
+    try {
+        const res = await fetch(`../pacientes/listar.php?tipo=buscar&idPaciente=${id}`);
+        const data = await res.json();
+
+        if (!data.ok) {
+            div.innerHTML = data.mensaje;
+            return;
+        }
+
+        const p = data.paciente;
+
+        div.innerHTML = `
+            <p><b>Nombre:</b> ${p.nombre}</p>
+            <p><b>Apellido:</b> ${p.apellido}</p>
+            <p><b>Estado:</b> ${p.estado}</p>
+        `;
+
+    } catch (error) {
+        div.innerHTML = "Error del servidor";
+        console.error(error);
+    }
+}
+
+async function buscarPaciente() {
+    const id = document.getElementById('buscarId').value;
+    const div = document.getElementById('resultadoPaciente');
+
+    if (id === "") {
+        div.innerHTML = "Ingrese un ID";
+        return;
+    }
+
+    div.innerHTML = "Buscando...";
+
+    try {
+        const res = await fetch(`../pacientes/listar.php?tipo=buscar&idPaciente=${id}`);
+        const data = await res.json();
+
+        if (!data.ok) {
+            div.innerHTML = data.mensaje;
+            return;
+        }
+
+        const p = data.paciente;
+        div.innerHTML = `
+    <div class="resultado-consulta">
+        <p><b>Nombre:</b> ${p.nombre}</p>
+        <p><b>Apellido:</b> ${p.apellido}</p>
+        <p><b>Estado:</b> ${p.estado}</p>
+    </div>
+    `;
+
+    } catch (error) {
+        div.innerHTML = "Error del servidor";
+        console.error(error);
+    }
 }
