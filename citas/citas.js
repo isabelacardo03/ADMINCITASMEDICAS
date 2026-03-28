@@ -42,118 +42,99 @@ function guardarCita() {
 }
 
 // Listar citas
-function listarCitas() {
+async function listarCitas() {
     const div = document.getElementById("citasTabla");
+    div.innerHTML = '<p>Cargando citas...</p>';
 
-    // Hacer petición básica al PHP
-    fetch("../citas/listarCitas.php")
-        .then(res => res.json()) // Convertir a JSON
-        .then(data => {
-            if (!data.ok) {
-                div.innerHTML = "Error al cargar citas";
-                return;
-            }
+    try {
+        const respuesta = await fetch("../citas/listarCitas.php");
+        const data = await respuesta.json();
 
-            if (data.citas.length === 0) {
-                div.innerHTML = "No hay citas";
-                return;
-            }
+        if (!data.ok) {
+            div.innerHTML = `<p>Error: ${data.mensaje}</p>`;
+            return;
+        }
 
-            // Construir tabla básica
-            let html = "<table border='1'>";
-            html += "<tr><th>ID</th><th>Médico</th><th>Fecha y Hora</th><th>Tipo</th><th>Estado</th><th>Acciones</th></tr>";
+        if (data.citas.length === 0) {
+            div.innerHTML = '<p>No hay citas</p>';
+            return;
+        }
 
-            data.citas.forEach(c => {
-                html += `<tr>
-                            <td>${c.id}</td>
-                            <td>${c.medico}</td>
-                            <td>${c.fechaHora}</td>
-                            <td>${c.tipoCita}</td>
-                            <td>${c.estado}</td>
-                            <td>
-                                <button onclick="modificarCita(${c.id}, '${c.medicoId}', '${c.fechaHora}', '${c.tipoCita}')">Modificar</button>
-                                <button onclick="cancelarCita(${c.id})">Cancelar</button>
-                            </td>
-                         </tr>`;
-            });
+        let html = `
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Médico</th>
+                    <th>Fecha y Hora</th>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+        `;
 
-            html += "</table>";
-            div.innerHTML = html;
-        })
-        .catch(error => {
-            div.innerHTML = "Error al conectar con el servidor";
-            console.error(error);
-        });
-}
+        for (const c of data.citas) {
+            html += `
+                <tr id="fila-${c.id}">
+                    <td>${c.id}</td>
+                    <td>${c.medico}</td>
+                    <td>${c.fechaHora}</td>
+                    <td>${c.tipoCita}</td>
+                    <td>${c.estado}</td>
+                    <td class="botones">
+                        <button onclick="eliminarCita(${c.id})">Cancelar</button>
+                        <button onclick="modificarCita(${c.id})">Modificar</button>
+                    </td>
+                </tr>
+            `;
+        }
 
+        html += `</tbody></table>`;
+        div.innerHTML = html;
 
-let citaEditandoId = null;
-
-// Cargar datos de una cita en el formulario para modificar
-function modificarCita(id, medicoId, fechaHora, tipoCita) {
-    citaEditandoId = id;
-    document.getElementById('medicoId').value = medicoId;
-    document.getElementById('fechaHora').value = fechaHora;
-    document.getElementById('tipoCita').value = tipoCita;
-    document.querySelector('#formCitas .botones button').innerText = "Actualizar";
-}
-
-// Función para actualizar cita
-function actualizarCita() {
-    if (!citaEditandoId) return;
-
-    const medicoId = document.getElementById('medicoId').value.trim();
-    const fechaHora = document.getElementById('fechaHora').value;
-    const tipoCita = document.getElementById('tipoCita').value.trim();
-
-    if (!medicoId || !fechaHora || !tipoCita) {
-        alert("Todos los campos son obligatorios");
-        return;
+    } catch (error) {
+        div.innerHTML = '<p>Error al conectar con el servidor</p>';
+        console.error(error);
     }
-
-    const datos = new FormData();
-    datos.append("id", citaEditandoId);
-    datos.append("idMedico", medicoId);
-    datos.append("fechaHora", fechaHora);
-    datos.append("tipoCita", tipoCita);
-
-    fetch("../citas/modificarCita.php", { method: "POST", body: datos })
-        .then(res => res.json())
-        .then(res => {
-            if (res.ok) {
-                alert("Cita actualizada correctamente");
-                listarCitas();       // Refresca tabla
-                limpiarFormulario(); // Limpia formulario
-                citaEditandoId = null;
-            } else {
-                alert(res.mensaje);
-            }
-        })
-        .catch(err => {
-            alert("Error al actualizar cita");
-            console.error(err);
-        });
 }
 
-// Limpiar formulario
-function limpiarFormulario() {
-    document.getElementById('medicoId').value = "";
-    document.getElementById('fechaHora').value = "";
-    document.getElementById('tipoCita').value = "";
-    document.querySelector('#formCitas .botones button').innerText = "Guardar";
-}
-// Cancelar cita
-function cancelarCita(id) {
-    if (!confirm("Deseas cancelar la cita?")) return;
-    const datos = new FormData();
-    datos.append("id", id);
 
-    fetch("../citas/eliminarCita.php", { method: "POST", body: datos })
-        .then(res => res.json())
-        .then(res => {
-            if (res.ok) listarCitas();
-            else alert(res.mensaje);
+function modificarCita(idCita) {
+    window.location.href = `../citas/modificarCita.php?id=${idCita}`;
+}
+
+
+async function eliminarCita(idCita) {
+    if (!confirm("Deseas cancelar la cita?"+idCita)) return;
+
+    const fila = document.getElementById(`fila-${idCita}`);
+    if (fila) fila.style.opacity = '0.4';
+
+    try {
+        const datos = new FormData();
+        datos.append("id", idCita);
+
+        const respuesta = await fetch("../citas/eliminarCita.php", {
+            method: "POST",
+            body: datos
         });
+
+        const resultado = await respuesta.json();
+
+        if (resultado.ok) {
+            listarCitas();
+        } else {
+            alert("Error: " + resultado.mensaje);
+            if (fila) fila.style.opacity = '1';
+        }
+
+    } catch (error) {
+        alert("Error del servidor");
+        if (fila) fila.style.opacity = '1';
+        console.error(error);
+    }
 }
 
 // Limpiar formulario
