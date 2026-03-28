@@ -123,6 +123,7 @@ th {
     background: #ecf0f1;
     padding: 20px;
     border-radius: 10px;
+    margin-bottom: 20px;
     
 }
 
@@ -153,8 +154,67 @@ th {
     background: #3498db;
     color: white;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .botones button:hover {
     background: #2980b9;
+}
+
+.formu{
+    margin-top: 20px;
+    margin-left: 500px;
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.formu form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.formu input,
+.formu select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.resultado-medico{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 60%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+
+.resultado-consulta {
+    width: 100%;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+
+p{
+    text-align: left;
+    padding: 8px 10px;
+    font-weight: 400;
+    color: #333;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #eee;
+}
+
+.resultado-consulta b{
+    color: #2c3e50;
+}
+
 }

@@ -30,7 +30,7 @@ if (!$paciente) {
     <link rel="stylesheet" href="style.css">
     
 </head>
-<body class="imagen-body">
+<body>
     <section class="form">
         <h2>Actualizar Paciente</h2>
 

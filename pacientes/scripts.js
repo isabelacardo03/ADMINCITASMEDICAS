@@ -122,40 +122,6 @@ async function buscarPaciente() {
         }
 
         const p = data.paciente;
-
-        div.innerHTML = `
-            <p><b>Nombre:</b> ${p.nombre}</p>
-            <p><b>Apellido:</b> ${p.apellido}</p>
-            <p><b>Estado:</b> ${p.estado}</p>
-        `;
-
-    } catch (error) {
-        div.innerHTML = "Error del servidor";
-        console.error(error);
-    }
-}
-
-async function buscarPaciente() {
-    const id = document.getElementById('buscarId').value;
-    const div = document.getElementById('resultadoPaciente');
-
-    if (id === "") {
-        div.innerHTML = "Ingrese un ID";
-        return;
-    }
-
-    div.innerHTML = "Buscando...";
-
-    try {
-        const res = await fetch(`../pacientes/listar.php?tipo=buscar&idPaciente=${id}`);
-        const data = await res.json();
-
-        if (!data.ok) {
-            div.innerHTML = data.mensaje;
-            return;
-        }
-
-        const p = data.paciente;
         div.innerHTML = `
     <div class="resultado-consulta">
         <p><b>Nombre:</b> ${p.nombre}</p>

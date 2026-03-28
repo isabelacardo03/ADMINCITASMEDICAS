@@ -1,96 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Pacientes</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-    <a href="../portal/portal.html"><img src="../img/logoHospital.webp" alt="Logo Hospital" class="logo"></a>
-    <ul>
-        <li class="active">Pacientes</li>
-        <li><a href="../medicos/medicos.html">Médicos</a></li>
-        <li><a href="">Citas</a></li>
-    </ul>
-    </img>
-</aside>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <a href="../portal/portal.html"><img src="../img/logoHospital.webp" alt="Logo Hospital" class="logo"></a>
+        <ul>
+            <li class="active">Pacientes</li>
+            <li><a href="../medicos/medicos.html">Médicos</a></li>
+            <li><a href="">Citas</a></li>
+        </ul>
+        </img>
+    </aside>
 
-<!-- HEADER -->
-<header class="header">
-    <input type="text" placeholder="Buscar paciente...">
-    <div class="user">Admin</div>
-</header>
+    <!-- HEADER -->
+    <header class="header">
+        <input type="text" placeholder="Buscar paciente...">
+        <div class="user">Admin</div>
+    </header>
 
-<!-- MAIN -->
-<main class="main">
+    <!-- MAIN -->
+    <main class="main">
 
-    <h1>Gestión de Pacientes</h1>
+        <h1>Gestión de Pacientes</h1>
 
-    <!-- FORMULARIO -->
-    <section class="form-section">
-        <h2>Registrar / Editar Paciente</h2>
+        <!-- FORMULARIO -->
+        <section class="form-section">
+            <h2>Registrar / Editar Paciente</h2>
 
-        <form id="formPaciente" action="guardar.php" method="post" > 
-            <input type="hidden" name="tipo" value="paciente">
-            <input type="text" placeholder="Identificación" id="identificacion" name="idPaciente">
-            <select id="tipoDocumento" name="tipoIdenti" >
-                <option value="">Tipo de documento</option>
-                <option value='CC'>CC</option>
-                <option value='TI'>TI</option>
-                <option value='CE'>CE</option>
-            </select>
-            <input type="text" placeholder="Nombre" id="nombre" name="nombre" >
-            <input type="text" placeholder="Apellido" id="apellido" name="apellido">
-            <input type="date" id="fechaNacimiento" name="fechaNacimiento">
-            <input type="text" placeholder="Dirección" id="direccion" name="direccion" >
-            <input type="text" placeholder="Teléfono" id="telefono" name="telefono" >
+            <form id="formPaciente" action="guardar.php" method="post">
+                <input type="hidden" name="tipo" value="paciente">
+                <input type="text" placeholder="Identificación" id="identificacion" name="idPaciente">
+                <select id="tipoDocumento" name="tipoIdenti">
+                    <option value="">Tipo de documento</option>
+                    <option value='CC'>CC</option>
+                    <option value='TI'>TI</option>
+                    <option value='CE'>CE</option>
+                </select>
+                <input type="text" placeholder="Nombre" id="nombre" name="nombre">
+                <input type="text" placeholder="Apellido" id="apellido" name="apellido">
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+                <input type="text" placeholder="Dirección" id="direccion" name="direccion">
+                <input type="text" placeholder="Teléfono" id="telefono" name="telefono">
 
-            <select id="estado" name="estado">
-                <option value="">Estado</option>
-                <option value='activo'>Activo</option>
-                <option value='inactivo'>Inactivo</option>
-            </select>
+                <select id="estado" name="estado">
+                    <option value="">Estado</option>
+                    <option value='activo'>Activo</option>
+                    <option value='inactivo'>Inactivo</option>
+                </select>
 
 
-            <div class="botones">
-                <button type="submit">Guardar</button>
-                <button type="button" >Cancelar</button>
+                <div class="botones">
+                    <button type="submit">Guardar</button>
+                    <button type="button">Cancelar</button>
+                </div>
+
+            </form>
+        </section>
+        <!-- seccion de consulta-->
+        <section class="form-section" id="buscarPacientes">
+            <h2>Consultar Paciente</h2>
+            <div>
+                <input type="text" id="buscarId" placeholder="Ingrese ID del paciente">
+
+                <div class="botones">
+                    <button type="button" onclick="buscarPaciente()">Buscar</button>
+                    <button type="button">limpiar</button>
+                </div>
             </div>
 
-        </form>
-    </section>
-   <!-- seccion de consulta--> 
-    <section class="form-section" id="buscarPacientes" >
-    <h2>Consultar Paciente</h2>
-    <div>
-        <input type="text" id="buscarId" placeholder="Ingrese ID del paciente">
+            <div id="resultadoPaciente" class="resultado-paciente"></div>
+        </section>
 
-        <div class="botones">
-            <button type="button" onclick="buscarPaciente()">Buscar</button>
-            <button type="button" >limpiar</button>
-        </div>
-    </div>
-
-    <div id="resultadoPaciente" class="resultado-paciente"></div>
-</section>
-
-    <!-- TABLA -->
-    <section class="table-section" >
-        <h2>Lista de Pacientes</h2>
+        <!-- TABLA -->
+        <section class="table-section">
+            <h2>Lista de Pacientes</h2>
             <div id="tablaPacientes">
-        <p >No hay pacientes
-        </p>
-    </div>
-        
-    </section>
+                <p>No hay pacientes
+                </p>
+            </div>
+
+        </section>
 
 
-</main>
+    </main>
 
-<script src="scripts.js"></script>
+    <script src="scripts.js"></script>
 </body>
+
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Médicos</title>
-    <link rel="stylesheet" href="medico.css">
+    <link rel="stylesheet" href="../medicos/medico.css">
 </head>
 <body>
 
@@ -35,61 +35,59 @@
     <section class="form-section">
         <h2>Registrar / Editar Médico</h2>
 
-        <form id="formMedico">
+        <form id="formMedico" action="../medicos/guardarMedi.php" method="post">
 
-            <input type="text" placeholder="ID Médico" id="idMedico">
-            <input type="text" placeholder="Nombre" id="nombre">
-            <input type="text" placeholder="Apellido" id="apellido">
-            <input type="text" placeholder="Teléfono" id="telefono">
+            <input type="text" placeholder="ID Médico" id="idMedico" name="idMedico">
+            <input type="text" placeholder="Nombre" id="nombre" name="nombre">
+            <input type="text" placeholder="Apellido" id="apellido" name="apellido">
+            <input type="text" placeholder="Teléfono" id="telefono" name="telefono">
 
-            <select id="estado">
+            <select id="estado" name="estado">
                 <option value="">Estado</option>
                 <option value="Activo">Activo</option>
                 <option value="Inactivo">Inactivo</option>
             </select>
 
-            <input type="text" placeholder="Tipo de Médico (Ej: General, Especialista)" id="tipoMedico">
+            <select id="tipoMedico" name="tipoMedico">
+                <option value="">Tipo de Médico</option>
+                <option value="general">General</option>
+                <option value="especialista">Especialista</option>
+            </select>
+
 
             <div class="botones">
-                <button type="button" onclick="guardarMedico()">Guardar</button>
-                <button type="button" onclick="modificarMedico()">Modificar</button>
-                <button type="button" onclick="eliminarMedico()">Eliminar</button>
+                <button type="submit" >Guardar</button>
+                <button type="button" >cancelar</button>
             </div>
 
         </form>
     </section>
 
-    <!-- TABLA -->
-    <section class="table-section">
+    <section class="form-section" id="buscarMedi">
+    <h2>Consultar Médico</h2>
+    <div>
+        <input type="text" id="buscarId" placeholder="Ingrese ID del médico">
+
+        <div class="botones">
+            <button type="button" onclick="buscarMedi()">Buscar</button>
+            <button type="button" onclick="limpiarBusqueda()">Limpiar</button>
+        </div>
+    </div>
+
+    <div id="resultadoMedico" class="resultado-paciente"></div>
+</section>
+
+    <section class="table-section" >
         <h2>Lista de Médicos</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Teléfono</th>
-                    <th>Tipo</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-
-            <tbody id="tablaMedicos">
-                <tr>
-                    <td>1</td>
-                    <td>Carlos</td>
-                    <td>López</td>
-                    <td>3009876543</td>
-                    <td>General</td>
-                    <td>Activo</td>
-                </tr>
-            </tbody>
-        </table>
+            <div id="tablaMedicos">
+        <p >No hay Médicos
+        </p>
+    </div>
+        
     </section>
 
 </main>
 
-<script src="medicos.js"></script>
+<script src="../medicos/medico.js"></script>
 </body>
 </html>
