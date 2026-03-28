@@ -1,8 +1,8 @@
 <?php
 require "../baseDatos.php";
 
-$identificacion = $_POST['identificacion'] ?? "";
-$tipoDocumento  = $_POST['tipoDocumento'] ?? "";
+$identificacion = $_POST['idPaciente'] ?? "";
+$tipoDocumento  = $_POST['tipoIdenti'] ?? "";
 $nombre         = $_POST['nombre'] ?? "";
 $apellido       = $_POST['apellido'] ?? "";
 $fechaNacimiento= $_POST['fechaNacimiento'] ?? "";
@@ -15,7 +15,7 @@ if ($identificacion === "" || $nombre === "" || $apellido === "") {
     exit;
 }
 
-    $sql = "UPDATE usuario SET tipoDocumento=?, nombre=?, apellido=?, fechaNacimiento=?, direccion=?, telefono=?, estado=? WHERE identificacion=?";
+    $sql = "UPDATE paciente SET tipoIdenti=?, nombre=?, apellido=?, fechaNacimiento=?, direccion=?, telefono=?, estado=? WHERE idPaciente=?";
     $stmt = mysqli_prepare($conexionBd, $sql);
     mysqli_stmt_bind_param($stmt, "ssssssss", $tipoDocumento, $nombre, $apellido, $fechaNacimiento, $direccion, $telefono, $estado, $identificacion);
 

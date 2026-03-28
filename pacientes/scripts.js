@@ -8,7 +8,7 @@ async function listar(){
     tabla.innerHTML = '<p>No hay pacientes...</p>';
 
     try{
-        const respuesta = await fetch("listar.php?tipo=paciente");
+        const respuesta = await fetch("../pacientes/listar.php?tipo=paciente");
         const resultado = await respuesta.json();
 
         if (!resultado.ok){
@@ -38,17 +38,17 @@ async function listar(){
 
         for (const p of resultado.pacientes) {
             html += `
-                <tr id="fila-${p.identificacion}">
-                    <td>${p.identificacion}</td>
+                <tr id="fila-${p.idPaciente}">
+                    <td>${p.idPaciente}</td>
                     <td>${p.nombre}</td>
                     <td>${p.apellido}</td>
                     <td>${p.telefono}</td>
                     <td>${p.estado}</td>
                     <td class="boton">
-                        <button class="btn-eliminar" onclick="eliminar('${p.identificacion}')">
+                        <button class="btn-eliminar" onclick="eliminar('${p.idPaciente}')">
                             Eliminar
                         </button>
-                        <button class="btn-modificar" onclick="modificarPaciente('${p.identificacion}')">
+                        <button class="btn-modificar" onclick="modificarPaciente('${p.idPaciente}')">
                             modificar
                         </button>
                     </td>
@@ -75,7 +75,7 @@ async function eliminar(identificacion) {
     try{
         const datos = new FormData();
         datos.append("tipo", "paciente");
-        datos.append('identificacion', identificacion);
+        datos.append('idPaciente', identificacion);
 
         const respuesta = await fetch("eliminar.php", {
             method: "POST",
@@ -98,5 +98,5 @@ async function eliminar(identificacion) {
 }
 
 function modificarPaciente(identificacion) {
-    window.location.href = `../pacientes/modificarPaciente.php?identificacion=${identificacion}`;
+    window.location.href = `../pacientes/modificarPaciente.php?idPaciente=${identificacion}`;
 }

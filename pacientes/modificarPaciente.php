@@ -1,7 +1,7 @@
 <?php
-require "../baseDatos.php";
+require __DIR__ . "/../baseDatos.php";
 
-$identificacion = $_GET['identificacion'] ?? "";
+$identificacion = $_GET['idPaciente'] ?? "";
 
 if ($identificacion === "") {
     echo "No se recibió identificación";
@@ -9,7 +9,7 @@ if ($identificacion === "") {
 }
 
 // Obtener datos del paciente
-$sql = "SELECT * FROM usuario WHERE identificacion=?";
+$sql = "SELECT * FROM paciente WHERE idPaciente=?";
 $stmt = mysqli_prepare($conexionBd, $sql);
 mysqli_stmt_bind_param($stmt, "s", $identificacion);
 mysqli_stmt_execute($stmt);
@@ -36,13 +36,13 @@ if (!$paciente) {
 
         <form id="formPaciente" action="actualizarPaciente.php" method="post"> 
             <input type="hidden" name="tipo" value="paciente">
-            <input type="text" placeholder="Identificación" id="identificacion" name="identificacion" value="<?php echo $paciente['identificacion']; ?>">
+            <input type="text" placeholder="Identificación" id="identificacion" name="idPaciente" value="<?php echo $paciente['idPaciente']; ?>">
             
-            <select id="tipoDocumento" name="tipoDocumento">
+            <select id="tipoDocumento" name="tipoIdenti">
                 <option value="">Tipo de documento</option>
-                <option value='CC' <?php echo ($paciente['tipoDocumento'] == 'CC') ? 'selected' : ''; ?>>CC</option>
-                <option value='TI' <?php echo ($paciente['tipoDocumento'] == 'TI') ? 'selected' : ''; ?>>TI</option>
-                <option value='CE' <?php echo ($paciente['tipoDocumento'] == 'CE') ? 'selected' : ''; ?>>CE</option>
+                <option value='CC' <?php echo ($paciente['tipoIdenti'] == 'CC') ? 'selected' : ''; ?>>CC</option>
+                <option value='TI' <?php echo ($paciente['tipoIdenti'] == 'TI') ? 'selected' : ''; ?>>TI</option>
+                <option value='CE' <?php echo ($paciente['tipoIdenti'] == 'CE') ? 'selected' : ''; ?>>CE</option>
             </select>
             
             <input type="text" placeholder="Nombre" id="nombre" name="nombre" value="<?php echo $paciente['nombre']; ?>">

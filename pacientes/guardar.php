@@ -12,8 +12,8 @@ if ($tipo === "") {
 
 if ($tipo === "paciente") {
 
-    $identificacion = trim($_POST["identificacion"] ?? "");
-    $tipoDocumento  = trim($_POST["tipoDocumento"] ?? "");
+    $identificacion = trim($_POST["idPaciente"] ?? "");
+    $tipoDocumento  = trim($_POST["tipoIdenti"] ?? "");
     $nombre         = trim($_POST["nombre"] ?? "");
     $apellido       = trim($_POST["apellido"] ?? "");
     $fechaNacimiento= trim($_POST["fechaNacimiento"] ?? "");
@@ -28,8 +28,8 @@ if ($identificacion === "" || $nombre === "" || $apellido === "") {
 
      try {
         $consulta = mysqli_prepare($conexionBd, 
-        "INSERT INTO usuario 
-        (identificacion, tipoDocumento, nombre, apellido, fechaNacimiento, direccion, telefono, estado) 
+        "INSERT INTO paciente 
+        (idPaciente, tipoIdenti, nombre, apellido, fechaNacimiento, direccion, telefono, estado) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
         mysqli_stmt_bind_param($consulta, "ssssssss",

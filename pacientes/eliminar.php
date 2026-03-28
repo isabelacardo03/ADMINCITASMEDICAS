@@ -12,14 +12,14 @@ if ($tipo === "") {
 
 if ($tipo === "paciente") {
 
-    $identificacion = intval($_POST['identificacion'] ?? 0);
+    $identificacion = intval($_POST['idPaciente'] ?? 0);
 
     if ($identificacion <= 0) {
         echo json_encode(["ok" => false, "mensaje" => 'Identificación Invalida']);
         exit;
     }
     try {
-        $consulta = mysqli_prepare($conexionBd, "DELETE FROM usuario WHERE identificacion=?");
+        $consulta = mysqli_prepare($conexionBd, "DELETE FROM paciente WHERE idPaciente=?");
         mysqli_stmt_bind_param($consulta, "i", $identificacion);
         mysqli_stmt_execute($consulta);
 

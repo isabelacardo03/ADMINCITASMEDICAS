@@ -13,7 +13,7 @@ if ($tipo === "") {
 if ($tipo === "paciente") {
 
     $resultado = mysqli_query($conexionBd, 
-    "SELECT * FROM usuario ORDER BY identificacion DESC");
+    "SELECT * FROM paciente ORDER BY idPaciente DESC");
 
     $pacientes = [];
 
