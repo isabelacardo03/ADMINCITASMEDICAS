@@ -1,235 +1,166 @@
-document.addEventListener('DOMContentLoaded', () => {       
-    listarCitas();  
+document.addEventListener('DOMContentLoaded', () => {
+    listarCitas();
 });
 
 
 
+// Traer nombre de médico automáticamente
+document.getElementById('medicoId').addEventListener('blur', () => {
+    const id = document.getElementById('medicoId').value.trim();
+    if (!id) return;
+    fetch("../citas/traerMedico.php?idMedico=" + id)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('medicoNombre').value = data.nombre || "";
+        });
+});
 
-
+// Guardar nueva cita
 function guardarCita() {
+    const medicoId = document.getElementById('idMedico').value.trim();
+    const fechaHora = document.getElementById('fechaHora').value;
+    const tipoCita = document.getElementById('tipoCita').value.trim();
 
-    const paciente = document.getElementById('paciente').value;
-    const medico   = document.getElementById('medico').value;
-    const fecha    = document.getElementById('fecha').value;
-    const hora     = document.getElementById('hora').value;
-
-    const datos = new FormData();
-
-    datos.append("tipo", "cita");
-    datos.append("paciente", paciente);
-    datos.append("medico", medico);
-    datos.append("fecha", fecha);
-    datos.append("hora", hora);
-
-    fetch("guardarCita.php", {
-        method: "POST",
-        body: datos
-    })
-    .then(res => res.json())
-    .then(resultado => {
-
-        if (resultado.ok) {
-            listarCitas();
-        } else {
-            alert(resultado.mensaje);
-        }
-
-    })
-    .catch(error => {
-        alert("Error al guardar");
-    });
-}
-
-
-function listarCitas(){
-
-    const tabla = document.getElementById("tablaCitas");
-
-    if (!tabla) return;
-
-    tabla.innerHTML = "Cargando...";
-
-    fetch("listarCitas.php?tipo=cita")
-    .then(res => res.json())
-    .then(resultado => {
-
-        if (!resultado.ok) {
-            tabla.innerHTML = "Error";
-            return;
-        }
-
-        let html = `
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Paciente</th>
-                <th>Médico</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Acción</th>
-            </tr>
-        `;
-
-        for (const c of resultado.citas) {
-            html += `
-            <tr>
-                <td>${c.id}</td>
-                <td>${c.paciente}</td>
-                <td>${c.medico}</td>
-                <td>${c.fecha}</td>
-                <td>${c.hora}</td>
-                <td>
-                    <button class="botones-tablas" onclick="eliminarCita(${c.id})">
-                        Cancelar
-                    </button>
-                </td>
-
-                <td>
-                    <button class="botones-tablas" onclick="modificarCita(${c.id})">
-                        Modificar
-                    </button>
-                </td>
-            </tr>
-            `;
-        }
-
-        html += `</table>`;
-        tabla.innerHTML = html;
-
-    })
-    .catch(error => {
-        tabla.innerHTML = "Error del servidor";
-    });
-}
-
-
-function eliminarCita(id) {
-
-    if (!confirm("¿Cancelar cita?")) return;
-
-    const datos = new FormData();
-    datos.append("id", id);
-
-    fetch("eliminarCita.php", {
-        method: "POST",
-        body: datos
-    })
-    .then(res => res.json())
-    .then(resultado => {
-
-        if (resultado.ok) {
-            listarCitas();
-        } else {
-            alert(resultado.mensaje);
-        }
-
-    })
-    .catch(error => {
-        alert("Error");
-    });
-}
-
-async function consultarCitas() {
-    const paciente = document.getElementById('filtroPaciente').value.trim();
-    const medico   = document.getElementById('filtroMedico').value.trim();
-    const fecha    = document.getElementById('filtroFecha').value;
-
-    const tabla = document.getElementById('tablaCitas');
-    tabla.innerHTML = "Buscando...";
-
-    // Construir parámetros GET dinámicamente
-    let params = new URLSearchParams({ tipo: "cita" });
-    if (paciente) params.append("paciente", paciente);
-    if (medico) params.append("medico", medico);
-    if (fecha) params.append("fecha", fecha);
-
-    try {
-        const res = await fetch("listarCitas.php?" + params.toString());
-        const data = await res.json();
-
-        if (!data.ok) return tabla.innerHTML = `<p>Error: ${data.mensaje}</p>`;
-        if (data.citas.length === 0) return tabla.innerHTML = "<p>No se encontraron citas</p>";
-
-        let html = `<table>
-            <thead>
-                <tr>
-                    <th>ID</th><th>Paciente</th><th>Médico</th>
-                    <th>Fecha</th><th>Hora</th><th>Acción</th>
-                </tr>
-            </thead><tbody>`;
-
-        for (const c of data.citas) {
-            html += `<tr id="filaCita-${c.id}">
-                        <td>${c.id}</td>
-                        <td>${c.paciente}</td>
-                        <td>${c.medico}</td>
-                        <td>${c.fecha}</td>
-                        <td>${c.hora}</td>
-                        <td>
-                            <button onclick="modificarCita(${c.id})">Modificar</button>
-                            <button onclick="eliminarCita(${c.id})">Cancelar</button>
-                        </td>
-                    </tr>`;
-        }
-
-        html += `</tbody></table>`;
-        tabla.innerHTML = html;
-
-    } catch (err) {
-        tabla.innerHTML = "Error del servidor";
-        console.error(err);
+    if (!medicoId || !fechaHora || !tipoCita) {
+        alert("Todos los campos son obligatorios");
+        return;
     }
+
+    const datos = new FormData();
+    datos.append("idMedico", medicoId);
+    datos.append("fechaHora", fechaHora);
+    datos.append("tipoCita", tipoCita);
+
+    fetch("../citas/guardarCita.php", { method: "POST", body: datos })
+        .then(res => res.json())
+        .then(res => {
+            if (res.ok) {
+                listarCitas();
+                limpiarFormulario();
+            } else alert(res.mensaje);
+        });
 }
 
-let citaEditandoId = null; // ID de la cita que estamos editando
+// Listar citas
+function listarCitas() {
+    const div = document.getElementById("citasTabla");
 
-// Preparar formulario para modificar cita (solo fecha y hora)
-function modificarCita(id) {
-    const fila = document.getElementById(`filaCita-${id}`);
-    if (!fila) return;
+    // Hacer petición básica al PHP
+    fetch("../citas/listarCitas.php")
+        .then(res => res.json()) // Convertir a JSON
+        .then(data => {
+            if (!data.ok) {
+                div.innerHTML = "Error al cargar citas";
+                return;
+            }
 
-    const cells = fila.getElementsByTagName('td');
+            if (data.citas.length === 0) {
+                div.innerHTML = "No hay citas";
+                return;
+            }
 
-    // Copiamos fecha y hora de la fila al formulario
-    document.getElementById('fecha').value = cells[3].innerText;
-    document.getElementById('hora').value   = cells[4].innerText;
+            // Construir tabla básica
+            let html = "<table border='1'>";
+            html += "<tr><th>ID</th><th>Médico</th><th>Fecha y Hora</th><th>Tipo</th><th>Estado</th><th>Acciones</th></tr>";
 
-    citaEditandoId = id; // Guardamos el ID para enviar al PHP
+            data.citas.forEach(c => {
+                html += `<tr>
+                            <td>${c.id}</td>
+                            <td>${c.medico}</td>
+                            <td>${c.fechaHora}</td>
+                            <td>${c.tipoCita}</td>
+                            <td>${c.estado}</td>
+                            <td>
+                                <button onclick="modificarCita(${c.id}, '${c.medicoId}', '${c.fechaHora}', '${c.tipoCita}')">Modificar</button>
+                                <button onclick="cancelarCita(${c.id})">Cancelar</button>
+                            </td>
+                         </tr>`;
+            });
 
-    // Cambiamos el texto del botón para que quede claro que es actualización
+            html += "</table>";
+            div.innerHTML = html;
+        })
+        .catch(error => {
+            div.innerHTML = "Error al conectar con el servidor";
+            console.error(error);
+        });
+}
+
+
+let citaEditandoId = null;
+
+// Cargar datos de una cita en el formulario para modificar
+function modificarCita(id, medicoId, fechaHora, tipoCita) {
+    citaEditandoId = id;
+    document.getElementById('medicoId').value = medicoId;
+    document.getElementById('fechaHora').value = fechaHora;
+    document.getElementById('tipoCita').value = tipoCita;
     document.querySelector('#formCitas .botones button').innerText = "Actualizar";
 }
 
-
+// Función para actualizar cita
 function actualizarCita() {
-    const paciente = document.getElementById('paciente').value;
-    const medico   = document.getElementById('medico').value;
-    const fecha    = document.getElementById('fecha').value;
-    const hora     = document.getElementById('hora').value;
+    if (!citaEditandoId) return;
+
+    const medicoId = document.getElementById('medicoId').value.trim();
+    const fechaHora = document.getElementById('fechaHora').value;
+    const tipoCita = document.getElementById('tipoCita').value.trim();
+
+    if (!medicoId || !fechaHora || !tipoCita) {
+        alert("Todos los campos son obligatorios");
+        return;
+    }
 
     const datos = new FormData();
     datos.append("id", citaEditandoId);
-    datos.append("paciente", paciente);
-    datos.append("medico", medico);
-    datos.append("fecha", fecha);
-    datos.append("hora", hora);
+    datos.append("idMedico", medicoId);
+    datos.append("fechaHora", fechaHora);
+    datos.append("tipoCita", tipoCita);
 
-    fetch("modificarCita.php", {
-        method: "POST",
-        body: datos
-    })
-    .then(res => res.json())
-    .then(resultado => {
-        if (resultado.ok) {
-            listarCitas(); // refresca la lista
-            citaEditandoId = null; // resetea edición
-            document.getElementById("paciente").value = "";
-            document.getElementById("medico").value = "";
-            document.getElementById("fecha").value = "";
-            document.getElementById("hora").value = "";
-        } else {
-            alert(resultado.mensaje);
-        }
-    })
-    .catch(error => alert("Error al actualizar"));
+    fetch("../citas/modificarCita.php", { method: "POST", body: datos })
+        .then(res => res.json())
+        .then(res => {
+            if (res.ok) {
+                alert("Cita actualizada correctamente");
+                listarCitas();       // Refresca tabla
+                limpiarFormulario(); // Limpia formulario
+                citaEditandoId = null;
+            } else {
+                alert(res.mensaje);
+            }
+        })
+        .catch(err => {
+            alert("Error al actualizar cita");
+            console.error(err);
+        });
+}
+
+// Limpiar formulario
+function limpiarFormulario() {
+    document.getElementById('medicoId').value = "";
+    document.getElementById('fechaHora').value = "";
+    document.getElementById('tipoCita').value = "";
+    document.querySelector('#formCitas .botones button').innerText = "Guardar";
+}
+// Cancelar cita
+function cancelarCita(id) {
+    if (!confirm("Deseas cancelar la cita?")) return;
+    const datos = new FormData();
+    datos.append("id", id);
+
+    fetch("../citas/eliminarCita.php", { method: "POST", body: datos })
+        .then(res => res.json())
+        .then(res => {
+            if (res.ok) listarCitas();
+            else alert(res.mensaje);
+        });
+}
+
+// Limpiar formulario
+function limpiarFormulario() {
+    document.getElementById('idMedico').value = "";
+    document.getElementById('nombre').value = "";
+    document.getElementById('fechaHora').value = "";
+    document.getElementById('tipoCita').value = "";
+    document.querySelector('#formCitas .botones button').innerText = "Guardar";
 }

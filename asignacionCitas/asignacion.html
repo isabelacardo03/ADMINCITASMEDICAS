@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asignación de Citas</title>
+    <link rel="stylesheet" href="../asignacionCitas/asignacion.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h2>Asignación de Citas</h2>
+
+        <!-- 🔎 FILTROS -->
+        <div class="filtros">
+            <button onclick="cargarCitas('confirmada')">Confirmadas</button>
+            <button onclick="cargarCitas('cancelada')">Canceladas</button>
+            <button onclick="cargarCitas('')">Todas</button>
+        </div>
+
+        <!-- 🔍 BUSCADOR (opcional pero útil) -->
+        <div class="buscador">
+            <input type="text" id="buscarPaciente" placeholder="Buscar por ID paciente">
+            <button onclick="buscar()">Buscar</button>
+            <button onclick="limpiar()">Limpiar</button>
+        </div>
+
+        <!-- 📋 TABLA -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Cita</th>
+                    <th>Paciente</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tablaCitas">
+                <!-- Aquí se cargan las citas -->
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="../asignacionCitas/asignacion.js"></script>
+
+</body>
+</html>

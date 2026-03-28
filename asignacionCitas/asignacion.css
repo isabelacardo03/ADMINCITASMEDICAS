@@ -1,0 +1,116 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+    width: 85%;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+/* TITULO */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* FILTROS */
+.filtros {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.filtros button {
+    padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    background: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filtros button:hover {
+    background: #2980b9;
+}
+
+/* BUSCADOR */
+.buscador {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.buscador input {
+    padding: 8px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buscador button {
+    padding: 8px 12px;
+    margin-left: 5px;
+    border: none;
+    background: #2ecc71;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buscador button:hover {
+    background: #27ae60;
+}
+
+/* TABLA */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* ENCABEZADO */
+thead {
+    background: #2c3e50;
+    color: white;
+}
+
+th {
+    padding: 12px;
+}
+
+/* FILAS */
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* EFECTO HOVER */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* COLORES SEGÚN ESTADO (opcional si luego lo usas en JS) */
+.confirmada {
+    color: green;
+    font-weight: bold;
+}
+
+.cancelada {
+    color: red;
+    font-weight: bold;
+}
