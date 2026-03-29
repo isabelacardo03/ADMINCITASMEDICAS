@@ -22,7 +22,7 @@ async function listar() {
         }
 
         let html = `
-        <table>
+        <table class="tablaMedicos">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -44,7 +44,7 @@ async function listar() {
                     <td>${m.apellido}</td>
                     <td>${m.telefono}</td>
                     <td>${m.estado}</td>
-                    <td class="botones">
+                    <td >
                         <button class="btn-eliminar" onclick="eliminarMedi('${m.idMedico}')">
                             Eliminar
                         </button>

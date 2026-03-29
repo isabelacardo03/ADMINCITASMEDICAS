@@ -7,41 +7,44 @@
 </head>
 <body>
 
-    <div class="contenedor">
+<div class="contenedor">
 
-        <h2>Asignación de Citas</h2>
+    <h2>Asignación de Citas</h2>
 
-        <!-- 🔎 FILTROS -->
-        <div class="filtros">
-            <button onclick="cargarCitas('confirmada')">Confirmadas</button>
-            <button onclick="cargarCitas('cancelada')">Canceladas</button>
-            <button onclick="cargarCitas('')">Todas</button>
-        </div>
+    <!-- FILTROS -->
+   <input type="text" id="buscarPaciente" placeholder="Ingrese ID paciente">
 
-        <!-- 🔍 BUSCADOR (opcional pero útil) -->
-        <div class="buscador">
-            <input type="text" id="buscarPaciente" placeholder="Buscar por ID paciente">
-            <button onclick="buscar()">Buscar</button>
-            <button onclick="limpiar()">Limpiar</button>
-        </div>
+<select id="estadoCita">
+    <option value="">--Seleccione estado--</option>
+    <option value="confirmada">Confirmada</option>
+    <option value="cancelada">Cancelada</option>
+</select>
 
-        <!-- 📋 TABLA -->
-        <table>
-            <thead>
-                <tr>
-                    <th>ID Cita</th>
-                    <th>Paciente</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody id="tablaCitas">
-                <!-- Aquí se cargan las citas -->
-            </tbody>
-        </table>
-
+<button onclick="buscar()">Buscar</button>
+<button onclick="limpiar()">Limpiar</button>
+    <!-- BUSCADOR -->
+    <div class="buscador">
+        <input type="text" id="buscarPaciente" placeholder="Ingrese ID del paciente">
+        <button type="button" onclick="buscar()">Buscar</button>
+        <button type="button" onclick="limpiar()">Limpiar</button>
     </div>
 
-    <script src="../asignacionCitas/asignacion.js"></script>
+    <!-- TABLA -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cita / Fecha</th>
+                <th>Paciente</th>
+                <th>Nombre</th>
+                <th>Estado / Acción</th>
+            </tr>
+        </thead>
+        <tbody id="tablaCitas"></tbody>
+    </table>
 
+</div>
+
+<script src="../asignacionCitas/asignacion.js"></script>
 </body>
 </html>

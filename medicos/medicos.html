@@ -8,82 +8,63 @@
 </head>
 <body>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-    <a href="../portal/portal.html"><img src="../img/logoHospital.webp" alt="Logo Hospital" class="logo"></a>
-
-    <ul>
-        <li><a href="index.html">Dashboard</a></li>
-        <li><a href="paciente.html">Pacientes</a></li>
-        <li class="active">Médicos</li>
-        <li><a href="">Citas</a></li>
-    </ul>
-</aside>
-
-<!-- HEADER -->
-<header class="header">
-    <input type="text" placeholder="Buscar médico...">
-    <div class="user">Admin</div>
-</header>
-
-<!-- MAIN -->
 <main class="main">
 
-    <h1>Gestión de Médicos</h1>
+    <!-- TITULO -->
+    <div class="titulo">
+        Gestión de Médicos
+    </div>
 
-    <!-- FORMULARIO -->
-    <section class="form-section">
-        <h2>Registrar / Editar Médico</h2>
+    <!-- BOTON VOLVER -->
+    <div class="volver">
+        <a href="../portal/portal.html">← Volver al portal</a>
+    </div>
 
-        <form id="formMedico" action="../medicos/guardarMedi.php" method="post">
+    <!-- FORMULARIOS LADO A LADO -->
+    <div class="form-row">
 
-            <input type="text" placeholder="ID Médico" id="idMedico" name="idMedico">
-            <input type="text" placeholder="Nombre" id="nombre" name="nombre">
-            <input type="text" placeholder="Apellido" id="apellido" name="apellido">
-            <input type="text" placeholder="Teléfono" id="telefono" name="telefono">
+        <!-- REGISTRAR / EDITAR -->
+        <section class="form-section izquierda">
+            <h2>Registrar / Editar Médico</h2>
+            <form id="formMedico" action="../medicos/guardarMedi.php" method="post">
+                <input type="text" placeholder="ID Médico" id="idMedico" name="idMedico">
+                <input type="text" placeholder="Nombre" id="nombre" name="nombre">
+                <input type="text" placeholder="Apellido" id="apellido" name="apellido">
+                <input type="text" placeholder="Teléfono" id="telefono" name="telefono">
+                <select id="estado" name="estado">
+                    <option value="">Estado</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+                <select id="tipoMedico" name="tipoMedico">
+                    <option value="">Tipo de Médico</option>
+                    <option value="general">General</option>
+                    <option value="especialista">Especialista</option>
+                </select>
+                <div class="botones">
+                    <button type="submit">Guardar</button>
+                    <button type="button">Cancelar</button>
+                </div>
+            </form>
+        </section>
 
-            <select id="estado" name="estado">
-                <option value="">Estado</option>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
-            </select>
-
-            <select id="tipoMedico" name="tipoMedico">
-                <option value="">Tipo de Médico</option>
-                <option value="general">General</option>
-                <option value="especialista">Especialista</option>
-            </select>
-
-
+        <!-- CONSULTAR -->
+        <section class="form-section derecha">
+            <h2>Consultar Médico</h2>
+            <input type="text" id="buscarId" placeholder="Ingrese ID del médico">
             <div class="botones">
-                <button type="submit" >Guardar</button>
-                <button type="button" >cancelar</button>
+                <button type="button" onclick="buscarMedi()">Buscar</button>
+                <button type="button" onclick="limpiarBusqueda()">Limpiar</button>
             </div>
+            <div id="resultadoMedico" class="resultado-paciente"></div>
+        </section>
 
-        </form>
-    </section>
-
-    <section class="form-section" id="buscarMedi">
-    <h2>Consultar Médico</h2>
-    <div>
-        <input type="text" id="buscarId" placeholder="Ingrese ID del médico">
-
-        <div class="botones">
-            <button type="button" onclick="buscarMedi()">Buscar</button>
-            <button type="button" onclick="limpiarBusqueda()">Limpiar</button>
-        </div>
     </div>
 
-    <div id="resultadoMedico" class="resultado-paciente"></div>
-</section>
-
-    <section class="table-section" >
+    <!-- LISTA DE MEDICOS -->
+    <section class="table-section">
         <h2>Lista de Médicos</h2>
-            <div id="tablaMedicos">
-        <p >No hay Médicos
-        </p>
-    </div>
-        
+        <div id="tablaMedicos"></div>
     </section>
 
 </main>

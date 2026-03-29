@@ -1,24 +1,54 @@
 <?php
 header("Content-Type: application/json");
-require __DIR__ . "/../baseDatos.php";
+require "../baseDatos.php";
 
-$estado = $_GET['estado'] ?? 'confirmada'; // por defecto confirmadas
+$estado = $_GET["estado"] ?? '';
+$idPaciente = $_GET["idPaciente"] ?? '';
 
-$sql = "SELECT id, idCita, identiPaciente, estado 
-        FROM citas 
-        WHERE estado = ?";
+// Consulta base
+$sql = "SELECT 
+            a.id,
+            a.idCita,
+            a.identiPaciente,
+            CONCAT(p.nombre, ' ', p.apellido) AS nombrePaciente,
+            a.estado
+        FROM asignacion_cita a
+        JOIN paciente p ON a.identiPaciente = p.idPaciente";
 
-$consulta = mysqli_prepare($conexionBd, $sql);
-mysqli_stmt_bind_param($consulta, "s", $estado);
-mysqli_stmt_execute($consulta);
+$where = [];
+$params = [];
 
-$resultado = mysqli_stmt_get_result($consulta);
-
-$citas = [];
-
-while ($fila = mysqli_fetch_assoc($resultado)) {
-    $citas[] = $fila;
+if ($estado != '') {
+    $where[] = "a.estado = '$estado'";
 }
 
-echo json_encode($citas);
+if ($idPaciente != '') {
+    $where[] = "a.identiPaciente = '$idPaciente'";
+}
+
+if (count($where) > 0) {
+    $sql .= " WHERE " . implode(" AND ", $where);
+}
+
+$sql .= " ORDER BY a.id DESC";
+
+$resultado = mysqli_query($conexionBd, $sql);
+
+if (!$resultado) {
+    echo json_encode([
+        "ok" => false,
+        "error" => mysqli_error($conexionBd)
+    ]);
+    exit;
+}
+
+$datos = [];
+while ($fila = mysqli_fetch_assoc($resultado)) {
+    $datos[] = $fila;
+}
+
+echo json_encode([
+    "ok" => true,
+    "datos" => $datos
+]);
 ?>
