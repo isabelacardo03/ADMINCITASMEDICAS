@@ -1,194 +1,167 @@
-/* --- Reset básico --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
+ background-color: #f0f4f8;
     display: flex;
-    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;}
+
+.volver {
+    width: 100%;
+
+    text-align: center;
+    margin-bottom: 10px;
+}
+.volver a {
+    text-decoration: none;
+    color: #3182ce;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: inline-block;
+    
 }
 
-/* --- Sidebar --- */
-.sidebar {
-    width: 220px;
-    height: 160vh;
-    background: #2c3e50;
+.volver a:hover {
+    color: #2b6cb0;
+}
+
+
+
+h1 {
+    background-color: #3182ce;
     color: white;
-    padding: 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 25px;
+}
+section {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 25px;
 }
 
-.sidebar h2 {
+section h2 {
+    font-size: 1.4rem;
+    color: #2c3e50;
     margin-bottom: 20px;
 }
 
-.sidebar ul {
-    list-style: none;
-}
-
-.sidebar li {
-    padding: 10px;
-    cursor: pointer;
-}
-
-.sidebar li:hover,
-.sidebar .active {
-    background: #34495e;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: white;
-}
-
-/* --- Header --- */
-.header {
-    position: fixed;
-    left: 207px;
-    top: 0;
-    right: 0;
-    height: 60px;
-    background: #ecf0f1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-/* --- Main --- */
-.main {
-    margin: 80px;
-    margin-top: 60px;
-    padding: 20px;
-    width: 100%;
-}
-
-/* --- Secciones de formulario --- */
-.form-section {
-    margin-top: 20px;
-    background: #ecf0f1;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.form-section input,
-.form-section select {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-#formCitas {
-    display: flex;
-    flex-wrap: wrap;
+#citaForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
-#formCitas input {
-    width: 48%;
+#citaForm div {
+    width: 100%;
 }
 
-/* --- Botones --- */
+input, select {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #cbd5e0;
+    font-size: 1rem;
+    width: 100%;
+    outline-color: #3182ce;
+    color: #4a5568;
+}
+
+/* BOTONES */
 .botones {
-    display: flex; 
-    gap: 10px;
+    display: flex;
+    gap: 15px;
+    grid-column: span 2; 
     margin-top: 10px;
 }
 
 .botones button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background: #3498db;
-    color: white;
-    cursor: pointer;
+    padding: 12px 25px;
+    border-radius: 12px;
     font-weight: 600;
-    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
 }
 
-.botones button:hover {
-    background: #2980b9;
+/* Botón Guardar */
+button[type="submit"] {
+    background-color: #3182ce;
+    color: white;
 }
 
-table {
+button[type="submit"]:hover {
+    background-color: #2b6cb0;
+}
+
+/* Botón Limpiar */
+button[type="reset"] {
+    background-color: #e2e8f0;
+    color: #2c3e50;
+}
+
+button[type="reset"]:hover {
+    background-color: #cbd5e0;
+}
+
+/* ESTILO DE LA TABLA (Generada por JS) */
+#citasTabla table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
 }
 
-table th, table td {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+#citasTabla th {
+    background-color: #f7fafc;
+    font-weight: 600;
+    color: #2c3e50;
+    text-transform: uppercase;
+    padding: 12px 15px;
     text-align: left;
+    border-bottom: 2px solid #e2e8f0;
 }
 
-table th {
-    background: #bdc3c7;
+#citasTabla td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    text-transform: uppercase;
+    color: #4a5568;
+    font-size: 0.9rem;
 }
 
-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-table button {
-    padding: 5px 5px;
+/* Botones de acción dentro de la tabla */
+.btn-eliminar, .btn-modificar {
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
     margin-right: 5px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    background: #3498db;  
-    color: white;         
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
 }
 
-/* Botón Modificar */
-table button.modificar {
-    background-color: #27ae60;
-    color: white;
+.btn-eliminar {
+    background-color: #e53e3e;
 }
 
-/* Botón Cancelar */
-table button.cancelar {
-    background-color: #c0392b;
-    color: white;
-}
-
-
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    #formCitas input {
-        width: 100%;
-    }
-
-    .main {
-        margin: 20px;
-    }
-}
-
-
-
-
-
-
-td .botones-tabla {
-    display: flex;
-    gap: 10px;                /* espacio entre botones */
-    justify-content: flex-start; /* alineación al inicio */
-}
-
-td .botones-tabla button {
-    padding: 5px 10px;        /* tamaño de botón más compacto */
-    background: #3498db;      /* mismo color que antes */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-td .botones-tabla button:hover {
-    background: #2980b9;
-}
