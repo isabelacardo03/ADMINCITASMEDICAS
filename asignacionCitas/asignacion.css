@@ -1,137 +1,68 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
-/* CONTENEDOR */
-.contenedor {
-    width: 92%;
-    margin: 40px auto;
-    background: #ffffff;
-    padding: 30px;
+/* CONTENEDOR PRINCIPAL */
+.main {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* TARJETAS */
+.form-section,
+.table-section {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* TITULO GRANDE */
+.titulo {
+    background-color: #3182ce;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* INPUTS BONITOS */
+input, select {
+    padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #cbd5e0;
 }
 
-/* TÍTULO */
-h2 {
-    text-align: center;
-    margin-bottom: 22px;
-    color: #2c3e50;
-    font-size: 1.5em;
-}
-
-/* FILTROS */
-.filtros {
-    text-align: center;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.filtros button {
-    padding: 8px 18px;
+/* BOTONES */
+button {
+    padding: 10px 15px;
+    border-radius: 10px;
     border: none;
-    background: #3498db;
-    color: white;
-    border-radius: 5px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.2s;
 }
 
-.filtros button:hover {
-    background: #2980b9;
-}
-
-/* BUSCADOR */
-.buscador {
-    text-align: center;
-    margin-bottom: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.buscador input {
-    padding: 8px 12px;
-    width: 260px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 0.95em;
-}
-
-.buscador button {
-    padding: 8px 16px;
-    border: none;
-    background: #2ecc71;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.2s;
-}
-
-.buscador button.btn-limpiar {
-    background: #95a5a6;
-}
-
-.buscador button:hover {
-    filter: brightness(0.9);
-}
-
-/* TABLA */
+/* TABLA BONITA */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 5px;
-}
-
-thead {
-    background: #2c3e50;
-    color: white;
 }
 
 th {
-    padding: 12px 10px;
-    text-align: center;
-    font-size: 0.95em;
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px;
 }
 
 td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    font-size: 0.92em;
-}
-
-tr:hover {
-    background-color: #f1f8ff;
-}
-
-/* ESTADOS */
-.confirmada {
-    color: #27ae60;
-    font-weight: bold;
-}
-
-.cancelada {
-    color: #c0392b;
-    font-weight: bold;
-}
-
-.pendiente {
-    color: #e67e22;
-    font-weight: bold;
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
 }

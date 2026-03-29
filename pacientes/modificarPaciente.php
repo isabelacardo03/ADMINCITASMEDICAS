@@ -31,7 +31,8 @@ if (!$paciente) {
     
 </head>
 <body>
-    <section class="form">
+    <section class="forms">
+        <h1 class="titulo">Modificar</h1>
         <h2>Actualizar Paciente</h2>
 
         <form id="formPaciente" action="actualizarPaciente.php" method="post"> 
@@ -58,7 +59,7 @@ if (!$paciente) {
 
             <div class="botones">
                 <button type="submit">Guardar</button>
-                <button type="button">Cancelar</button>
+                <button type="button" >Cancelar</button>
             </div>
         </form>
     </section>

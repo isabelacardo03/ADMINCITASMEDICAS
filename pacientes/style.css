@@ -76,10 +76,8 @@ body {
     margin-bottom: 10px;
 }
 
-/* FORMULARIOS EN GRILLA */
 form {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
@@ -92,7 +90,6 @@ input, select {
     outline-color: #3182ce;
 }
 
-/* BOTONES DEL FORMULARIO */
 .botones {
     display: flex;
     gap: 10px;
@@ -128,7 +125,7 @@ input, select {
     background-color: #cbd5e0;
 }
 
-/* TABLA SECCIÓN */
+
 .table-section {
     background: white;
     padding: 30px;
@@ -171,7 +168,7 @@ input, select {
     gap: 8px;
 }
 
-/* BOTONES DE ACCIÓN EN TABLA */
+
 .btn-eliminar, .btn-modificar {
     padding: 6px 14px;
     border-radius: 8px;
@@ -199,17 +196,27 @@ input, select {
     background-color: #2b6cb0;
 }
 
-/* RESULTADO DE CONSULTA */
-.resultado-consulta {
+
+
+.resultado-consulta{
     padding: 12px 15px;
     text-align: left;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #c4c4c4;
     border-radius: 10px;
-    background-color: #f7fafc;
-    margin-top: 10px;
+   
+    p{
+        text-transform:capitalize;
+    }
 }
 
-.resultado-consulta p {
-    text-transform: capitalize;
-    color: #4a5568;
+.forms{
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 700px;
+    margin: auto;
 }
+
+

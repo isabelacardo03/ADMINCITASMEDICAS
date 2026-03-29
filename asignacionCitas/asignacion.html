@@ -7,43 +7,70 @@
 </head>
 <body>
 
-<div class="contenedor">
+<main class="main">
 
-    <h2>Asignación de Citas</h2>
+    <!-- VOLVER -->
+    <div class="volver">
+        <a href="../portal/portal.html">⬅ Volver</a>
+    </div>
+
+    <!-- TITULO -->
+    <div class="titulo">
+        Asignación de Citas
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="form-section">
+        <h2>Asignar Cita</h2>
+
+        <div class="form-row">
+            <input type="text" id="buscarPaciente" placeholder="Ingrese ID paciente">
+
+            <select id="estadoCita">
+                <option value="">--Seleccione estado--</option>
+                <option value="confirmada">Confirmada</option>
+                <option value="cancelada">Cancelada</option>
+            </select>
+        </div>
+
+        <div class="botones">
+            <button onclick="buscar()">Buscar</button>
+            <button onclick="limpiar()" type="button">Limpiar</button>
+        </div>
+    </div>
 
     <!-- FILTROS -->
-   <input type="text" id="buscarPaciente" placeholder="Ingrese ID paciente">
+    <div class="form-section">
+        <h2>Filtrar Citas</h2>
 
-<select id="estadoCita">
-    <option value="">--Seleccione estado--</option>
-    <option value="confirmada">Confirmada</option>
-    <option value="cancelada">Cancelada</option>
-</select>
-
-<button onclick="buscar()">Buscar</button>
-<button onclick="limpiar()">Limpiar</button>
-    <!-- BUSCADOR -->
-    <div class="buscador">
-        <input type="text" id="buscarPaciente" placeholder="Ingrese ID del paciente">
-        <button type="button" onclick="buscar()">Buscar</button>
-        <button type="button" onclick="limpiar()">Limpiar</button>
+        <div class="filtros">
+            <button onclick="cargarCitas('')" class="btn-filtro">Todas</button>
+            <button onclick="cargarCitas('confirmada')" class="btn-filtro confirmar">Confirmadas</button>
+            <button onclick="cargarCitas('cancelada')" class="btn-filtro cancelar">Canceladas</button>
+        </div>
     </div>
 
     <!-- TABLA -->
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Cita / Fecha</th>
-                <th>Paciente</th>
-                <th>Nombre</th>
-                <th>Estado / Acción</th>
-            </tr>
-        </thead>
-        <tbody id="tablaCitas"></tbody>
-    </table>
+    <div class="table-section">
+        <h2>Listado de Citas</h2>
 
-</div>
+        <div class="tablaMedicos">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cita</th>
+                        <th>Paciente</th>
+                        <th>Nombre</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaCitas"></tbody>
+            </table>
+        </div>
+    </div>
+
+</main>
 
 <script src="../asignacionCitas/asignacion.js"></script>
 </body>
