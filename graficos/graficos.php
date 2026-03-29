@@ -28,6 +28,8 @@ while($f = mysqli_fetch_assoc($res_med)){
         <h1>Estadísticas Hospitalarias</h1>
     </div>
 
+    <a href="../portal/portal.html" class="boton-volver"><- Volver al Panel</a>
+
     <div class="container">
         <div class="chart-card">
             <h3>Estado de las Citas</h3>
@@ -38,8 +40,6 @@ while($f = mysqli_fetch_assoc($res_med)){
             <canvas id="chartMedicos"></canvas>
         </div>
     </div>
-
-    <a href="../portal/portal.html" class="btn-volver">Volver al Panel</a>
 
     <script>
         // Pasamos datos de PHP a variables globales de JS

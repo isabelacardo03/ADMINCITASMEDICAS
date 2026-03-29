@@ -1,37 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    margin: 0; padding: 20px;
+background-color: #f0f2f5; /* Gris muy claro de fondo */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .header-graficos {
-    background-color: #000080;
+background-color: #3182ce; /* Azul vibrante */
     color: white;
+    width: 85%;
+    max-width: 1000px;
+    margin-top: 40px;
     padding: 20px;
     text-align: center;
-    border-radius: 10px;
-    margin-bottom: 30px;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    h1{
+        margin: 0;
+    font-size: 26px;
+    letter-spacing: 1px;
+    }
 }
 .container {
-    display: flex;
-    flex-wrap: wrap;
+display: flex;
+    flex-wrap: wrap; /* Para que sea responsivo */
     justify-content: center;
     gap: 30px;
+    padding: 40px 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .chart-card {
     background: white;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    width: 400px;
+    width: 360px;
 }
-.btn-volver {
-    display: block;
-    width: 200px;
-    margin: 30px auto;
-    padding: 10px;
-    background: #007bff;
-    color: white;
+
+.boton-volver {
+    width: 100%;
     text-align: center;
+    margin-bottom: 10px;
     text-decoration: none;
-    border-radius: 5px;
+    color: #3182ce;
+    font-weight: 600;
+    margin-top: 20px;
+    display: inline-block;
+}
+.boton-volver a {
+    text-decoration: none;
+    color: #3182ce;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: inline-block;
+    
+}
+
+.boton-volver a:hover {
+    color: #2b6cb0;
 }

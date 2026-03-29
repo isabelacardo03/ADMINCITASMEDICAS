@@ -1,8 +1,6 @@
 <?php
 include('../baseDatos.php');
-session_start();
 
-// Mensajes de confirmación
 $msg = isset($_GET['msg']) ? $_GET['msg'] : "";
 $error = isset($_GET['error']) ? $_GET['error'] : "";
 ?>
@@ -14,12 +12,16 @@ $error = isset($_GET['error']) ? $_GET['error'] : "";
     <link rel="stylesheet" href="gestionDatos.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Centro de Importación y Exportación</h1>
-    </div>
 
-    <?php if($msg) echo "<div class='alert success'>$msg</div>"; ?>
-    <?php if($error) echo "<div class='alert danger'>$error</div>"; ?>
+    <header class="container">
+        <div class="header">
+            <h1>Centro de Importación y Exportación</h1>
+        </div>
+    </header>
+
+    <div class="boton-volver">
+        <a href="../portal/portal.html" class="boton-volver">← Volver al Panel Principal</a>
+    </div>
 
     <div class="grid">
         <div class="card">
@@ -29,8 +31,8 @@ $error = isset($_GET['error']) ? $_GET['error'] : "";
                 <hr>
                 <form action="procesar_importar.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="tipo" value="pacientes">
-                    <label>Subir archivo .csv:</label>
-                    <input type="file" name="archivo" accept=".csv" required>
+                    <label>Subir archivo CSV:</label>
+                    <input type="file" name="archivo" accept=".xlsx, .xls" required>
                     <button type="submit" class="boton boton-importar">Cargar en Bloque</button>
                 </form>
             </div>
@@ -43,16 +45,13 @@ $error = isset($_GET['error']) ? $_GET['error'] : "";
                 <hr>
                 <form action="procesar_importar.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="tipo" value="citas">
-                    <label>Subir archivo .csv:</label>
-                    <input type="file" name="archivo" accept=".csv" required>
+                    <label>Subir archivo Excel (.xlsx, .xls):</label>
+                    <input type="file" name="archivo" accept=".xlsx, .xls" required>
                     <button type="submit" class="boton boton-importar">Cargar en Bloque</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <div style="text-align:center; margin-top:20px;">
-        <a href="../portal/portal.html" style="color:#666; text-decoration:none;">← Volver al Panel Principal</a>
-    </div>
 </body>
 </html>
