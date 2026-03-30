@@ -1,8 +1,5 @@
 <?php
 include('../baseDatos.php');
-
-$msg = isset($_GET['msg']) ? $_GET['msg'] : "";
-$error = isset($_GET['error']) ? $_GET['error'] : "";
 ?>
 <!DOCTYPE html>
 <html lang="es">

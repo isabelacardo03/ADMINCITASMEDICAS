@@ -43,7 +43,6 @@ while($f = mysqli_fetch_assoc($res_med)){
     </div>
 
     <script>
-        // Pasamos datos de PHP a variables globales de JS
         const datosEstados = <?php echo json_encode($data_est); ?>;
         const labelsEstados = <?php echo json_encode($labels_est); ?>;
         const datosMedicos = <?php echo json_encode($data_med); ?>;
