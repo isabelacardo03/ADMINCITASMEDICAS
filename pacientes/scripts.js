@@ -25,7 +25,8 @@ async function listar() {
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Identificación <br>
+                    del paciente</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Teléfono</th>

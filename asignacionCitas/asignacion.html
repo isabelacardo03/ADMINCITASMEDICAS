@@ -18,30 +18,32 @@
         <a href="../portal/portal.html"> ← Volver al portal </a>
     </div>
 
-    <!-- FORMULARIO -->
     <div class="form-section">
-        <h2>Asignar Cita</h2>
+    <h2>Asignar Cita</h2>
 
-        <div class="form-row">
+    <div class="form-grid">
+
+        <div class="campo">
+            <label>ID Paciente</label>
             <input type="text" id="buscarPaciente" placeholder="Ingrese ID paciente">
         </div>
 
-        <!-- NUEVO: SELECT MÉDICOS -->
-        <div class="form-row">
+        <div class="campo">
+            <label>Médico</label>
             <select id="selectMedico" onchange="cargarAgendas()">
                 <option value="">--Seleccione médico--</option>
             </select>
         </div>
 
-        <!-- NUEVO: SELECT AGENDAS -->
-        <div class="form-row">
+        <div class="campo">
+            <label>Agenda</label>
             <select id="selectAgenda">
                 <option value="">--Seleccione agenda--</option>
             </select>
         </div>
 
-        <!-- ESTADO (el que ya tenías) -->
-        <div class="form-row">
+        <div class="campo">
+            <label>Estado</label>
             <select id="estadoCita">
                 <option value="">--Seleccione estado--</option>
                 <option value="confirmada">Confirmada</option>
@@ -49,12 +51,14 @@
             </select>
         </div>
 
-        <div class="botones">
-            <button onclick="buscar()">Buscar</button>
-            <button onclick="limpiar()" type="button">Limpiar</button>
-        </div>
     </div>
 
+    <div class="botones">
+        <button onclick="buscar()">Buscar</button>
+        <button onclick="limpiar()" type="button">Limpiar</button>
+    </div>
+
+</div>
     <!-- FILTROS -->
     <div class="form-section">
         <h2>Filtrar Citas</h2>
@@ -76,9 +80,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Cita</th>
-                        <th>Paciente</th>
-                        <th>Nombre</th>
-                        <th>Estado</th>
+                        <th>Identificación del Paciente</th>
+                        <th>Nombre del paciente</th>
+                        <th>Estado de la cita</th>
                     </tr>
                 </thead>
                 <tbody id="tablaCitas"></tbody>

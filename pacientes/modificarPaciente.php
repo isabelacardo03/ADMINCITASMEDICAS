@@ -28,6 +28,7 @@ if (!$paciente) {
 <head>
     <meta charset="UTF-8">
     <title>Modificar Paciente</title>
+     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 
 </head>

@@ -56,7 +56,7 @@ async function buscar() {
 
 
     if (!data.ok || data.citas.length === 0) {
-        tabla.innerHTML = "<tr><td colspan='5'>No hay citas disponibles</td></tr>";
+        tabla.innerHTML = "<tr><td>No hay citas disponibles</td></tr>";
         return;
     }
 
@@ -67,7 +67,7 @@ async function buscar() {
             <tr>
                 <td>${c.id}</td>
                 <td>${c.fechaHora}</td>
-                <td colspan="2">
+                <td >
                     <button onclick="asignar(${c.id})">Asignar</button>
                 </td>
             </tr>
@@ -78,10 +78,6 @@ async function buscar() {
 }
 
 
-
-// =====================
-// ASIGNAR CITA
-// =====================
 async function asignar(idCita) {
     const idPaciente = document.getElementById("buscarPaciente").value;
     const estado = document.getElementById("estadoCita").value;
@@ -135,7 +131,7 @@ async function cargarAgendas() {
     const selectAgenda = document.getElementById("selectAgenda");
 
     if (!idMedico) {
-        selectAgenda.innerHTML = '<option value="">--Seleccione agenda--</option>';
+        selectAgenda.innerHTML = '<option value="">Seleccione agenda</option>';
         return;
     }
 
@@ -143,7 +139,7 @@ async function cargarAgendas() {
         const res = await fetch(`../citas/listarAgendas.php?idMedico=${idMedico}`);
         const datos = await res.json();
 
-        selectAgenda.innerHTML = '<option value="">--Seleccione agenda--</option>';
+        selectAgenda.innerHTML = '<option value="">Seleccione agenda</option>';
 
         datos.agendas.forEach(agenda => {
             selectAgenda.innerHTML += `

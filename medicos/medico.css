@@ -208,7 +208,6 @@ button[type="reset"]:hover {
     flex-direction: column;
 }
 
-/* LABEL */
 .campo label {
     font-size: 0.85rem;
     color: #4a5568;

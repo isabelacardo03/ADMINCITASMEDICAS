@@ -71,11 +71,13 @@ async function listarCitas() {
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Identificaión <br>
+                    del médico</th>
                     <th>Médico</th>
                     <th>Fecha y Hora</th>
                     <th>Tipo</th>
-                    <th>Estado</th>
+                    <th>Estado de <br>
+                    la agenda</th>
                     <th>Acción</th>
                 </tr>
             </thead>

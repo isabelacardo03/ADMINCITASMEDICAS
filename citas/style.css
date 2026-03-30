@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* RESET */
+
 * {
     margin: 0;
     padding: 0;
@@ -34,6 +34,7 @@ body {
 .volver a:hover {
     color: #2b6cb0;
 }
+
 
 
 
@@ -85,7 +86,7 @@ input, select {
     color: #4a5568;
 }
 
-/* BOTONES */
+
 .botones {
     display: flex;
     gap: 15px;
@@ -123,7 +124,7 @@ button[type="reset"]:hover {
     background-color: #cbd5e0;
 }
 
-/* ESTILO DE LA TABLA (Generada por JS) */
+
 #citasTabla table {
     width: 100%;
     border-collapse: collapse;
@@ -148,7 +149,6 @@ button[type="reset"]:hover {
     font-size: 0.9rem;
 }
 
-/* Botones de acción dentro de la tabla */
 .btn-eliminar, .btn-modificar {
     background-color: #3182ce;
     color: white;
@@ -165,33 +165,57 @@ button[type="reset"]:hover {
     background-color: #e53e3e;
 }
 
-/* =========================
-   TABLET
-========================= */
-@media (max-width: 900px) {
 
-    section {
-        padding: 20px;
-    }
-
-    #citaForm {
-        grid-template-columns: 1fr; /* una sola columna */
-    }
-
-    .botones {
-        flex-wrap: wrap;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-        padding: 15px;
-    }
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
 
-/* =========================
-   CELULARES
-========================= */
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.campo label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 5px;
+}
+
+
+input, select {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e0;
+    font-size: 0.95rem;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(49,130,206,0.2);
+}
+
+
+input:disabled {
+    background: #edf2f7;
+    color: #718096;
+}
+
+.botones {
+    grid-column: span 2;
+    display: flex;
+    gap: 10px;
+}
+
+
+
+/* CELULARES*/
 @media (max-width: 600px) {
 
     body {
@@ -218,7 +242,7 @@ button[type="reset"]:hover {
         padding: 10px;
     }
 
-    /* BOTONES */
+  
     .botones {
         flex-direction: column;
         width: 100%;
@@ -228,16 +252,16 @@ button[type="reset"]:hover {
         width: 100%;
     }
 
-    /* TABLA RESPONSIVE */
+    
     #citasTabla {
         overflow-x: auto;
     }
 
     #citasTabla table {
-        min-width: 650px; /* evita que se rompa */
+        min-width: 650px; 
     }
 
-    /* BOTONES DE TABLA */
+  
     .btn-eliminar,
     .btn-modificar {
         display: block;
@@ -246,8 +270,28 @@ button[type="reset"]:hover {
         text-align: center;
     }
 
-    /* LINK VOLVER */
     .volver a {
         font-size: 0.9rem;
+    }
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+
+    section {
+        padding: 20px;
+    }
+
+    #citaForm {
+        grid-template-columns: 1fr; /* una sola columna */
+    }
+
+    .botones {
+        flex-wrap: wrap;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        padding: 15px;
     }
 }
