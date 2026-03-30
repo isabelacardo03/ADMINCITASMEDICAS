@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* RESET */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +8,6 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* BODY */
 body {
     background-color: #f0f4f8;
     display: flex;
@@ -16,7 +15,6 @@ body {
     padding: 40px 20px;
 }
 
-/* MAIN */
 .main {
     max-width: 1200px;
     width: 100%;
@@ -25,7 +23,6 @@ body {
     gap: 30px;
 }
 
-/* TITULO */
 .titulo {
     background-color: #3182ce;
     color: white;
@@ -33,30 +30,31 @@ body {
     font-weight: 700;
     padding: 20px;
     border-radius: 12px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
-/* BOTON VOLVER */
+
 .volver a {
     text-decoration: none;
     color: #3182ce;
     font-weight: 600;
     margin-bottom: 20px;
-    display: inline-block;
+    text-align: center;
+    display: block;
 }
 
 .volver a:hover {
     color: #2b6cb0;
 }
 
-/* FORMULARIOS LADO A LADO */
 .form-row {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
 }
 
-/* SECCIONES */
+
 .form-section {
     background: white;
     padding: 30px;
@@ -65,7 +63,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    flex: 1; /* se expanden igual */
+    flex: 1;
     min-width: 300px;
 }
 
@@ -75,7 +73,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* FORMULARIOS */
 form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -90,7 +87,6 @@ input, select {
     width: 100%;
 }
 
-/* BOTONES */
 .botones {
     display: flex;
     gap: 15px;
@@ -116,12 +112,12 @@ input, select {
     background-color: #2b6cb0;
 }
 
-.botones button[type="button"]:last-child {
+button[type="reset"] {
     background-color: #e2e8f0;
     color: #2c3e50;
 }
 
-.botones button[type="button"]:last-child:hover {
+button[type="reset"]:hover {
     background-color: #cbd5e0;
 }
 
@@ -203,5 +199,93 @@ input, select {
    
     p{
         text-transform:capitalize;
+    }
+}
+
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+/* LABEL */
+.campo label {
+    font-size: 0.85rem;
+    color: #4a5568;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+/*
+   TABLET (pantallas medianas)
+ */
+@media (max-width: 900px) {
+
+    .form-row {
+        flex-direction: column; 
+    }
+
+    form {
+        grid-template-columns: 1fr; 
+    }
+
+    .main {
+        padding: 0 10px;
+    }
+}
+
+
+/* =========================
+   CELULARES (pantallas pequeñas)
+========================= */
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .titulo {
+        font-size: 1.4rem;
+        padding: 15px;
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+
+    input, select {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    /* BOTONES */
+    .botones {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .botones button {
+        width: 100%;
+    }
+
+    .tablaMedicos {
+        overflow-x: auto; /* scroll horizontal */
+    }
+
+    .tablaMedicos table {
+        min-width: 600px; /* evita que se rompa */
+    }
+
+    /* BOTONES DE ACCIONES */
+    .tablaMedicos .acciones {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .tabla-boton,
+    .btn-eliminar,
+    .btn-modificar {
+        width: 100%;
+        text-align: center;
     }
 }

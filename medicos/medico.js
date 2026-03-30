@@ -136,7 +136,11 @@ async function buscarMedi() {
     }
 }
 
+
 function limpiarBusqueda() {
     document.getElementById('buscarId').value = "";
     document.getElementById('resultadoMedico').innerHTML = "";
 }
+
+
+

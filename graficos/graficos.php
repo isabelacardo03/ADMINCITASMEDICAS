@@ -21,6 +21,7 @@ while($f = mysqli_fetch_assoc($res_med)){
     <meta charset="UTF-8">
     <title>Reportes - Hospital San Vicente</title>
     <link rel="stylesheet" href="graficos.css">
+     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>

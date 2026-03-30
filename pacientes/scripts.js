@@ -77,7 +77,7 @@ async function eliminar(identificacion) {
         datos.append("tipo", "paciente");
         datos.append('idPaciente', identificacion);
 
-        const respuesta = await fetch("eliminar.php", {
+        const respuesta = await fetch("../pacientes/eliminar.php", {
             method: "POST",
             body: datos
         });
@@ -134,4 +134,9 @@ async function buscarPaciente() {
         div.innerHTML = "Error del servidor";
         console.error(error);
     }
+}
+
+function limpiarBusqueda() {
+    document.getElementById('buscarId').value = "";
+    document.getElementById('resultadoPaciente').innerHTML = "";
 }

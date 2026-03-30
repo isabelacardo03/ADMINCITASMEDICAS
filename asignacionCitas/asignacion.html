@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
     <title>Asignación de Citas</title>
     <link rel="stylesheet" href="../asignacionCitas/asignacion.css">
 </head>
@@ -9,22 +10,38 @@
 
 <main class="main">
 
-   
     <div class="titulo">
         Asignación de Citas
     </div>
 
     <div class="volver">
-        <a href="../portal/portal.html">⬅ Volver</a>
+        <a href="../portal/portal.html"> ← Volver al portal </a>
     </div>
 
-   
+    <!-- FORMULARIO -->
     <div class="form-section">
         <h2>Asignar Cita</h2>
 
         <div class="form-row">
             <input type="text" id="buscarPaciente" placeholder="Ingrese ID paciente">
+        </div>
 
+        <!-- NUEVO: SELECT MÉDICOS -->
+        <div class="form-row">
+            <select id="selectMedico" onchange="cargarAgendas()">
+                <option value="">--Seleccione médico--</option>
+            </select>
+        </div>
+
+        <!-- NUEVO: SELECT AGENDAS -->
+        <div class="form-row">
+            <select id="selectAgenda">
+                <option value="">--Seleccione agenda--</option>
+            </select>
+        </div>
+
+        <!-- ESTADO (el que ya tenías) -->
+        <div class="form-row">
             <select id="estadoCita">
                 <option value="">--Seleccione estado--</option>
                 <option value="confirmada">Confirmada</option>

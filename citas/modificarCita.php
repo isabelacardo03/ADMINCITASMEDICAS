@@ -56,14 +56,13 @@ if (!$cita) {
 
             <label>Estado:</label>
             <select name="estado">
-                <option value="pendiente" <?php echo ($cita['estado']=='pendiente')?'selected':''; ?>>Pendiente</option>
-                <option value="atendida" <?php echo ($cita['estado']=='atendida')?'selected':''; ?>>Atendida</option>
+                <option value="confirmada" <?php echo ($cita['estado']=='confirmada')?'selected':''; ?>>Confirmada</option>
                 <option value="cancelada" <?php echo ($cita['estado']=='cancelada')?'selected':''; ?>>Cancelada</option>
             </select>
 
             <div class="botones">
                 <button type="submit">Actualizar</button>
-                <button type="button" onclick="history.back()">Cancelar</button>
+                <button type="button" onclick="window.location.href='../citas/citas.html'">Cancelar</button>
             </div>
         </form>
     </section>
