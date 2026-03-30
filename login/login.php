@@ -1,6 +1,5 @@
 <?php
 include('../baseDatos.php'); 
-session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $identificacion = mysqli_real_escape_string($conexionBd, $_POST['email']);
@@ -25,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     } else {
-        header("Location: login.html?error=user");
+        echo "<script>alert('Las contraseñas es incorrecta.'); window.location.href = '../login/login.html';</script>";
         exit();
     }
 }
