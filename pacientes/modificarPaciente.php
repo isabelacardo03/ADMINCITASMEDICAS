@@ -24,44 +24,85 @@ if (!$paciente) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Modificar Paciente</title>
+     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
+
 <body>
     <section class="forms">
         <h1 class="titulo">Modificar</h1>
-        <h2>Actualizar Paciente</h2>
 
-        <form id="formPaciente" action="actualizarPaciente.php" method="post"> 
-            <input type="hidden" name="tipo" value="paciente">
-            <input type="text" placeholder="Identificación" id="identificacion" name="idPaciente" value="<?php echo $paciente['idPaciente']; ?>">
-            
-            <select id="tipoDocumento" name="tipoIdenti">
-                <option value="">Tipo de documento</option>
-                <option value='CC' <?php echo ($paciente['tipoIdenti'] == 'CC') ? 'selected' : ''; ?>>CC</option>
-                <option value='TI' <?php echo ($paciente['tipoIdenti'] == 'TI') ? 'selected' : ''; ?>>TI</option>
-                <option value='CE' <?php echo ($paciente['tipoIdenti'] == 'CE') ? 'selected' : ''; ?>>CE</option>
-            </select>
-            
-            <input type="text" placeholder="Nombre" id="nombre" name="nombre" value="<?php echo $paciente['nombre']; ?>">
-            <input type="text" placeholder="Apellido" id="apellido" name="apellido" value="<?php echo $paciente['apellido']; ?>">
-            <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $paciente['fechaNacimiento']; ?>">
-            <input type="text" placeholder="Dirección" id="direccion" name="direccion" value="<?php echo $paciente['direccion']; ?>">
-            <input type="text" placeholder="Teléfono" id="telefono" name="telefono" value="<?php echo $paciente['telefono']; ?>">
+        <div class="card">
+            <h2>Actualizar Paciente</h2>
 
-            <select id="estado" name="estado">
-            <option value='activo'>Activo</option>
-            <option value='inactivo'>Inactivo</option>
-        </select>
+            <form id="formPaciente" action="actualizarPaciente.php" method="post">
+                <input type="hidden" name="tipo" value="paciente">
 
-            <div class="botones">
-                <button type="submit">Guardar</button>
-                <button type="button" >Cancelar</button>
-            </div>
-        </form>
+                <div class="campo">
+                    <label>Identificación</label>
+                    <input type="text" name="idPaciente" value="<?php echo $paciente['idPaciente']; ?>">
+                </div>
+
+                <div class="campo">
+                    <label>Tipo de documento</label>
+                    <select name="tipoIdenti">
+                        <option value="">Seleccione</option>
+                        <option value='CC' <?php echo ($paciente['tipoIdenti'] == 'CC') ? 'selected' : ''; ?>>CC
+                        </option>
+                        <option value='TI' <?php echo ($paciente['tipoIdenti'] == 'TI') ? 'selected' : ''; ?>>TI
+                        </option>
+                        <option value='CE' <?php echo ($paciente['tipoIdenti'] == 'CE') ? 'selected' : ''; ?>>CE
+                        </option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" value="<?php echo $paciente['nombre']; ?>">
+                </div>
+
+                <div class="campo">
+                    <label>Apellido</label>
+                    <input type="text" name="apellido" value="<?php echo $paciente['apellido']; ?>">
+                </div>
+
+                <div class="campo">
+                    <label>Fecha de nacimiento</label>
+                    <input type="date" name="fechaNacimiento" value="<?php echo $paciente['fechaNacimiento']; ?>">
+                </div>
+
+                <div class="campo">
+                    <label>Dirección</label>
+                    <input type="text" name="direccion" value="<?php echo $paciente['direccion']; ?>">
+                </div>
+
+                <div class="campo">
+                    <label>Teléfono</label>
+                    <input type="text" name="telefono" value="<?php echo $paciente['telefono']; ?>">
+                </div>
+
+                <div class="campo">
+                    <label>Estado</label>
+                    <select name="estado">
+                        <option value='activo' <?php echo ($paciente['estado'] == 'activo') ? 'selected' : ''; ?>>
+                            Activo</option>
+                        <option value='inactivo' <?php echo ($paciente['estado'] == 'inactivo') ? 'selected' : ''; ?>>
+                            Inactivo</option>
+                    </select>
+                </div>
+
+                <div class="botones">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="window.location.href='../pacientes/paciente.html'">Cancelar</button>
+                </div>
+            </form>
+        </div>
     </section>
 </body>
+
 </html>

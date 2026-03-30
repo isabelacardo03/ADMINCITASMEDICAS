@@ -7,34 +7,33 @@
     font-family: 'Inter', sans-serif;
 }
 
-body {
-background-color: #f0f2f5; /* Gris muy claro de fondo */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+body{
+    background-color: #f0f4f8;
 }
-.header-graficos {
-background-color: #3182ce; /* Azul vibrante */
-    color: white;
-    width: 85%;
-    max-width: 1000px;
-    margin-top: 40px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
-    h1{
-        margin: 0;
-    font-size: 26px;
-    letter-spacing: 1px;
-    }
+.header-graficos {
+    background-color: #3182ce;
+    color: white;
+    width: 90%; 
+    max-width: 800px; 
+    margin: 40px auto; 
+    padding: 17px 20px; 
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+.header-graficos h1 {
+    margin: 0;
+    font-size: 2rem; 
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+
 .container {
 display: flex;
-    flex-wrap: wrap; /* Para que sea responsivo */
+    flex-wrap: wrap; 
     justify-content: center;
     gap: 30px;
     padding: 40px 20px;
@@ -43,31 +42,92 @@ display: flex;
 }
 .chart-card {
     background: white;
-    padding: 20px;
+    padding: 7px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     width: 360px;
+    
 }
 
+
+
 .boton-volver {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: #3182ce;
-    font-weight: 600;
-    margin-top: 20px;
-    display: inline-block;
-}
-.boton-volver a {
     text-decoration: none;
     color: #3182ce;
     font-weight: 600;
     margin-bottom: 20px;
     display: inline-block;
-    
+    font-weight: 600;
+    margin-top: 20px;
+    text-align: center;
+    display: block;
 }
 
-.boton-volver a:hover {
+.boton-volver:hover {
     color: #2b6cb0;
+}
+
+/* =========================
+   TABLET (pantallas medianas)
+========================= */
+@media (max-width: 900px) {
+
+    .header-graficos {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .header-graficos h1 {
+        font-size: 1.6rem;
+    }
+
+    .container {
+        gap: 20px;
+        padding: 30px 15px;
+    }
+
+    .chart-card {
+        width: 100%; /* ocupan todo el ancho */
+        max-width: 500px;
+    }
+}
+
+
+/* =========================
+   CELULARES (pantallas pequeñas)
+========================= */
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .header-graficos {
+        width: 100%;
+        margin: 20px 0;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .header-graficos h1 {
+        font-size: 1.3rem;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 10px;
+    }
+
+    .chart-card {
+        width: 100%;
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .boton-volver {
+        font-size: 0.9rem;
+        margin-top: 15px;
+    }
 }

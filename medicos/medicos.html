@@ -4,26 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Médicos</title>
+     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../medicos/medico.css">
 </head>
 <body>
 
 <main class="main">
 
-    <!-- TITULO -->
+  
     <div class="titulo">
         Gestión de Médicos
     </div>
-
-    <!-- BOTON VOLVER -->
+   
     <div class="volver">
         <a href="../portal/portal.html">← Volver al portal</a>
     </div>
 
-    <!-- FORMULARIOS LADO A LADO -->
+    
     <div class="form-row">
 
-        <!-- REGISTRAR / EDITAR -->
         <section class="form-section izquierda">
             <h2>Registrar / Editar Médico</h2>
             <form id="formMedico" action="../medicos/guardarMedi.php" method="post">
@@ -43,12 +42,12 @@
                 </select>
                 <div class="botones">
                     <button type="submit">Guardar</button>
-                    <button type="button">Cancelar</button>
+                    <button type="reset" value="">Cancelar</button>
                 </div>
             </form>
         </section>
 
-        <!-- CONSULTAR -->
+    
         <section class="form-section derecha">
             <h2>Consultar Médico</h2>
             <input type="text" id="buscarId" placeholder="Ingrese ID del médico">
@@ -61,7 +60,6 @@
 
     </div>
 
-    <!-- LISTA DE MEDICOS -->
     <section class="table-section">
         <h2>Lista de Médicos</h2>
         <div id="tablaMedicos"></div>

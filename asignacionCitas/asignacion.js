@@ -2,9 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarCitas("");
 });
 
-// =====================
-// CARGAR CITAS ASIGNADAS
-// =====================
+
 async function cargarCitas(estado = "") {
 
     const tabla = document.getElementById("tablaCitas");
@@ -41,9 +39,6 @@ async function cargarCitas(estado = "") {
 }
 
 
-// =====================
-// BUSCAR CITAS DISPONIBLES
-// =====================
 async function buscar() {
 
     const idPaciente = document.getElementById("buscarPaciente").value;
@@ -61,7 +56,7 @@ async function buscar() {
 
 
     if (!data.ok || data.citas.length === 0) {
-        tabla.innerHTML = "<tr><td colspan='5'>No hay citas disponibles</td></tr>";
+        tabla.innerHTML = "<tr><td>No hay citas disponibles</td></tr>";
         return;
     }
 
@@ -72,7 +67,7 @@ async function buscar() {
             <tr>
                 <td>${c.id}</td>
                 <td>${c.fechaHora}</td>
-                <td colspan="2">
+                <td >
                     <button onclick="asignar(${c.id})">Asignar</button>
                 </td>
             </tr>
@@ -83,10 +78,6 @@ async function buscar() {
 }
 
 
-
-// =====================
-// ASIGNAR CITA
-// =====================
 async function asignar(idCita) {
     const idPaciente = document.getElementById("buscarPaciente").value;
     const estado = document.getElementById("estadoCita").value;
@@ -108,6 +99,60 @@ async function asignar(idCita) {
     cargarCitas("");
 }
 
+async function cargarMedicos() {
+    const select = document.getElementById("selectMedico");
+
+    try {
+        const res = await fetch("../medicos/listarMedicocombo.php");
+        const datos = await res.json();
+
+        select.innerHTML = '';
+
+         datos.medicos.forEach(medico => {
+            select.innerHTML += `
+                <option value="${medico.idMedico}">
+                    ${medico.nombre}
+                </option>
+            `;
+        });
+
+        // 🔥 Selecciona automáticamente el primero
+        if (datos.length > 0) {
+            select.value = datos[0].idMedico;
+        }
+
+    } catch (error) {
+        console.error("Error cargando médicos:", error);
+    }
+}
+
+async function cargarAgendas() {
+    const idMedico = document.getElementById("selectMedico").value;
+    const selectAgenda = document.getElementById("selectAgenda");
+
+    if (!idMedico) {
+        selectAgenda.innerHTML = '<option value="">Seleccione agenda</option>';
+        return;
+    }
+
+    try {
+        const res = await fetch(`../citas/listarAgendas.php?idMedico=${idMedico}`);
+        const datos = await res.json();
+
+        selectAgenda.innerHTML = '<option value="">Seleccione agenda</option>';
+
+        datos.agendas.forEach(agenda => {
+            selectAgenda.innerHTML += `
+                <option value="${agenda.idCita}">
+                    ${agenda.fechaHora}
+                </option>
+            `;
+        });
+
+    } catch (error) {
+        console.error("Error cargando agendas:", error);
+    }
+}
 // =====================
 // LIMPIAR
 // =====================
@@ -115,3 +160,8 @@ function limpiar() {
     document.getElementById("buscarPaciente").value = "";
     cargarCitas("");
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await cargarMedicos();
+    cargarAgendas(); 
+});

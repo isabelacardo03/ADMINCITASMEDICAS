@@ -25,7 +25,7 @@ async function listar() {
         <table class="tablaMedicos">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Ientificaión del médico</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Teléfono</th>
@@ -136,7 +136,11 @@ async function buscarMedi() {
     }
 }
 
+
 function limpiarBusqueda() {
     document.getElementById('buscarId').value = "";
     document.getElementById('resultadoMedico').innerHTML = "";
 }
+
+
+

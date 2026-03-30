@@ -36,6 +36,29 @@ body {
     text-align: center;
 }
 
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+/* LABEL */
+.campo label {
+    font-size: 0.85rem;
+    color: #4a5568;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 /* BOTON VOLVER */
 .volver a {
     text-decoration: none;
@@ -43,7 +66,8 @@ body {
     font-weight: 600;
     font-size: 0.9rem;
     margin-bottom: 10px;
-    display: inline-block;
+    text-align: center;
+    display: block;
 }
 
 .volver a:hover {
@@ -220,3 +244,83 @@ input, select {
 }
 
 
+/* =========================
+   RESPONSIVE - TABLETS
+========================= */
+@media (max-width: 900px) {
+
+    .main {
+        padding: 0 10px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-section {
+        width: 100%;
+    }
+
+    form {
+        grid-template-columns: 1fr; /* una sola columna */
+    }
+
+    .botones {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+
+/* =========================
+   RESPONSIVE - CELULARES
+========================= */
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .titulo {
+        font-size: 1.3rem;
+        padding: 12px;
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+
+    input, select {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .botones {
+        flex-direction: column; /* botones uno debajo del otro */
+        width: 100%;
+    }
+
+    .botones button {
+        width: 100%;
+    }
+
+    /* TABLA SCROLL */
+    .tablaMedicos {
+        overflow-x: auto;
+    }
+
+    .tablaMedicos table {
+        min-width: 600px; /* evita que se dañe */
+    }
+
+    /* BOTONES DE TABLA */
+    .acciones {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .btn-eliminar, .btn-modificar {
+        width: 100%;
+        text-align: center;
+    }
+}

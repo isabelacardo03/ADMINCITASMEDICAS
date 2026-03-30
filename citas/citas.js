@@ -17,11 +17,12 @@ document.getElementById('medicoId').addEventListener('blur', () => {
 
 // Guardar nueva cita
 function guardarCita() {
-    const medicoId = document.getElementById('idMedico').value.trim();
-    const fechaHora = document.getElementById('fechaHora').value;
-    const tipoCita = document.getElementById('tipoCita').value.trim();
+    const medicoId = document.getElementById('medicoId').value.trim();
+    const fechaHora = document.getElementById('fecha').value;
+    const tipoCita = document.getElementById('tipoCita').value;
+    const estado = document.getElementById('estadoCita').value;
 
-    if (!medicoId || !fechaHora || !tipoCita) {
+    if (!medicoId || !fechaHora || !tipoCita || !estado) {
         alert("Todos los campos son obligatorios");
         return;
     }
@@ -30,15 +31,21 @@ function guardarCita() {
     datos.append("idMedico", medicoId);
     datos.append("fechaHora", fechaHora);
     datos.append("tipoCita", tipoCita);
+    datos.append("estado", estado);
 
-    fetch("../citas/guardarCita.php", { method: "POST", body: datos })
-        .then(res => res.json())
-        .then(res => {
-            if (res.ok) {
-                listarCitas();
-                limpiarFormulario();
-            } else alert(res.mensaje);
-        });
+    fetch("../citas/guardarCita.php", {
+        method: "POST",
+        body: datos
+    })
+    .then(res => res.json())
+    .then(res => {
+        if (res.ok) {
+            listarCitas();
+            limpiarFormulario();
+        } else {
+            alert(res.mensaje);
+        }
+    });
 }
 
 // Listar citas
@@ -64,11 +71,13 @@ async function listarCitas() {
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Identificaión <br>
+                    del médico</th>
                     <th>Médico</th>
                     <th>Fecha y Hora</th>
                     <th>Tipo</th>
-                    <th>Estado</th>
+                    <th>Estado de <br>
+                    la agenda</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -143,5 +152,6 @@ function limpiarFormulario() {
     document.getElementById('nombre').value = "";
     document.getElementById('fechaHora').value = "";
     document.getElementById('tipoCita').value = "";
+     document.getElementById('estado').value = "";
     document.querySelector('#formCitas .botones button').innerText = "Guardar";
 }

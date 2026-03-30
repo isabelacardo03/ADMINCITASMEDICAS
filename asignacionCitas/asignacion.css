@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
 }
 
-/* CONTENEDOR PRINCIPAL */
+
 .main {
     max-width: 1100px;
     width: 100%;
@@ -25,7 +25,7 @@ body {
     gap: 25px;
 }
 
-/* TÍTULO AZUL */
+
 .titulo {
     background-color: #3182ce;
     color: white;
@@ -37,17 +37,15 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* ENLACE VOLVER */
 .volver a {
     text-decoration: none;
     color: #3182ce;
     font-weight: 600;
-    font-size: 0.9rem;
-    display: inline-block;
-    margin-bottom: 5px;
+    font-size: 1rem;
+    text-align: center;
+    display: block;
 }
 
-/* SECCIONES (Tarjetas blancas) */
 .form-section, .table-section {
     background: white;
     padding: 25px;
@@ -61,7 +59,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* FILAS DE FORMULARIO */
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -69,6 +66,18 @@ body {
     margin-bottom: 20px;
 }
 
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 input, select {
     padding: 12px 15px;
     border-radius: 10px;
@@ -79,7 +88,7 @@ input, select {
     outline-color: #3182ce;
 }
 
-/* BOTONES PRINCIPALES */
+
 .botones {
     display: flex;
     gap: 12px;
@@ -93,6 +102,7 @@ input, select {
     cursor: pointer;
     font-size: 0.95rem;
     transition: 0.2s;
+    margin-top: 10px;
 }
 
 .botones button:first-child {
@@ -109,7 +119,7 @@ input, select {
     opacity: 0.9;
 }
 
-/* FILTROS DE CITAS */
+
 .filtros {
     display: flex;
     gap: 10px;
@@ -131,7 +141,6 @@ input, select {
     background-color: #f7fafc;
 }
 
-/* Colores de filtros específicos */
 .btn-filtro.confirmar {
     border-color: #68d391;
     color: #2f855a;
@@ -150,7 +159,6 @@ input, select {
     background-color: #fff5f5;
 }
 
-/* TABLA DE CITAS */
 .tablaMedicos table {
     width: 100%;
     border-collapse: collapse;
@@ -174,4 +182,93 @@ input, select {
     color: #2d3748;
     text-transform: uppercase;
 }
+
+/* TABLET*/
+@media (max-width: 900px) {
+
+    .main {
+        padding: 0 10px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr; /* pasa a una columna */
+    }
+
+    .botones {
+        flex-wrap: wrap;
+    }
+
+    .titulo {
+        font-size: 1.4rem;
+    }
+}
+
+
+/* CELULARES */
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .titulo {
+        font-size: 1.2rem;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .form-section, .table-section {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .form-section h2, .table-section h2 {
+        font-size: 1.1rem;
+    }
+
+    input, select {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+  
+    .botones {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .botones button {
+        width: 100%;
+    }
+
+    /* FILTROS */
+    .filtros {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn-filtro {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tablaMedicos {
+        overflow-x: auto;
+    }
+
+    .tablaMedicos table {
+        min-width: 650px;
+    }
+
+    .tablaMedicos th,
+    .tablaMedicos td {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+
+    .volver a {
+        font-size: 0.9rem;
+    }
+}
+
 
